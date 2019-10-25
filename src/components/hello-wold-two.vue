@@ -1,5 +1,5 @@
 <style scoped lang="sass">
-@import '../styles/app.variables'
+@import '../styles/lib.variables'
 
 .container
   color: $red-12
