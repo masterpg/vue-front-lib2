@@ -1,25 +1,22 @@
-module.exports = {
-  root: true,
-  env: {
-    node: true
+const merge = require('lodash/merge')
+
+const prettierConfig = require('./prettier.config')
+
+const eslintConfig = merge(
+  require('web-base-lib/conf/.eslintrc.base.js'),
+  {
+    'extends': [
+      'plugin:vue/recommended',
+      '@vue/typescript',
+    ],
+    'rules': {
+      'prettier/prettier': ['error', prettierConfig],
+      'no-console': 'off',
+      'vue/html-self-closing': 'off',
+      'vue/max-attributes-per-line': 'off',
+      'vue/singleline-html-element-content-newline': 'off',
+    },
   },
-  extends: ["plugin:vue/essential", "@vue/prettier", "@vue/typescript"],
-  rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off"
-  },
-  parserOptions: {
-    parser: "@typescript-eslint/parser"
-  },
-  overrides: [
-    {
-      files: [
-        "**/__tests__/*.{j,t}s?(x)",
-        "**/tests/unit/**/*.spec.{j,t}s?(x)"
-      ],
-      env: {
-        jest: true
-      }
-    }
-  ]
-};
+)
+
+module.exports = eslintConfig
