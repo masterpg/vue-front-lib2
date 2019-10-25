@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base",
+  "compilerOptions": {
+    "outDir": "dist/types"
+  },
+  "files":[
+    "src/components/index.ts"
+  ],
+  "include": [
+    "src/components/**/*.ts",
+    "src/components/**/*.tsx",
+    "src/components/**/*.vue"
+  ]
+}
