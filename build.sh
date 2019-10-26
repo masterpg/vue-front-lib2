@@ -48,7 +48,7 @@ fi
 
 ABSOLUTE_DEST="$CURRENT_DIR/$ARG_DEST"
 
-cd "$SCRIPT_DIR/.."
+cd "$SCRIPT_DIR"
 
 BUILD_COMMAND="vue-cli-service build --target lib --name vue-front-lib2 ./src/main.ts --dest \"$ABSOLUTE_DEST\""
 

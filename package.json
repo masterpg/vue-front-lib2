@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "./tools/build.sh --dest ./lib",
+    "build": "./build.sh --dest ./lib",
     "build:types": "tsc --emitDeclarationOnly --declaration --project tsconfig.types.json",
     "test:unit": "vue-cli-service test:unit",
     "lint": "./node_modules/web-base-lib/tools/lint.sh"
