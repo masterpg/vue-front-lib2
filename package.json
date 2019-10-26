@@ -8,15 +8,16 @@
     "type": "git",
     "url": "https://github.com/masterpg/vue-front-lib2.git"
   },
-  "main": "dist/vue-front-lib2.common.js",
-  "unpkg": "dist/vue-front-lib2.umd.js",
+  "main": "lib/vue-front-lib2.common.js",
+  "unpkg": "lib/vue-front-lib2.umd.js",
   "files": [
-    "dist",
-    "src"
+    "lib",
+    "src",
+    "tools"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name vue-front-lib2 ./src/main.ts",
+    "build": "./tools/build.sh --dest ./lib",
     "build:types": "tsc --emitDeclarationOnly --declaration --project tsconfig.types.json",
     "test:unit": "vue-cli-service test:unit",
     "lint": "./node_modules/web-base-lib/tools/lint.sh"

@@ -6,7 +6,10 @@
 </style>
 
 <template>
-  <div class="container">Hello Wold One {{ msg }}</div>
+  <div class="container">
+    Hello Wold One {{ msg }}
+    <q-btn flat rounded color="primary" label="Cancel" />
+  </div>
 </template>
 
 <script lang="ts">

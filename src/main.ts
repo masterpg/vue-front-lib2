@@ -1,3 +1,4 @@
+import './quasar'
 import * as components from '@/components'
 import { PluginObject } from 'vue'
 import { Vue as _Vue } from 'vue-property-decorator'
@@ -14,4 +15,4 @@ export default {
   },
 } as PluginObject<any>
 
-export * from '@/liblary'
+export * from '@/library'
