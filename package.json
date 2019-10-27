@@ -8,8 +8,7 @@
     "type": "git",
     "url": "https://github.com/masterpg/vue-front-lib2.git"
   },
-  "main": "lib/vue-front-lib2.common.js",
-  "unpkg": "lib/vue-front-lib2.umd.js",
+  "main": "lib/vue-front-lib2.umd.js",
   "files": [
     "lib",
     "src",

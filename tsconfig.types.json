@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.base",
   "compilerOptions": {
-    "outDir": "dist/types"
+    "outDir": "lib/types"
   },
   "files":[
     "src/components/index.ts"

@@ -1,3 +1,2 @@
-export function hoge(): string {
-  return 'hoge'
-}
+export * from './fuga'
+export * from './hoge'
