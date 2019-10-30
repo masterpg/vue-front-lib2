@@ -1,4 +1,6 @@
-import HelloWorldOne from '@/components/hello-wold-one.vue'
-import HelloWorldWwo from '@/components/hello-wold-two.vue'
+import HelloWorldOne from './hello-wold-one.vue'
+import HelloWorldWwo from './hello-wold-two.vue'
 
 export { HelloWorldOne, HelloWorldWwo }
+export * from './base'
+export * from './solo/tree-view'

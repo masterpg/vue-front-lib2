@@ -1,13 +1,12 @@
 {
   "name": "vue-front-lib2-example",
   "scripts": {
-    "dev": "vue-cli-service serve --mode development",
-    "stg": "vue-cli-service build --mode staging & npm run serve & npm --prefix functions run serve",
-    "build:front": "../build.sh --dest ./node_modules/vue-front-lib2/lib",
-    "build": "vue-cli-service build --mode production",
-    "build:dev": "vue-cli-service build --mode development",
+    "dev:front-lib": "../scripts/dev.sh --nodedir ./node_modules",
+    "watch:front-lib": "npm run dev:front-lib -- --watch",
+    "build:dev": "npm run dev:front-lib && vue-cli-service build --mode development",
     "build:stg": "vue-cli-service build --mode staging",
-    "serve": "firebase serve --only hosting --port=5000",
+    "build": "vue-cli-service build --mode production",
+    "serve": "npm run dev:front-lib && npm run watch:front-lib & vue-cli-service serve --mode development",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "testcafe chrome:headless tests/e2e/**/*.test.ts -S -s screenshots --hostname localhost",
     "lint": "./node_modules/web-base-lib/tools/lint.sh",

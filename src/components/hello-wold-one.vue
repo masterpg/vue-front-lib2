@@ -13,12 +13,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop } from 'vue-property-decorator'
+import { BaseComponent } from "./base";
 
 @Component({
   name: 'hello-world-one',
 })
-export default class HelloWorldOne extends Vue {
+export default class HelloWorldOne extends BaseComponent {
   @Prop() private msg!: string
 }
 </script>

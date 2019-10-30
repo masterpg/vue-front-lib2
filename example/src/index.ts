@@ -1,23 +1,24 @@
 import 'animate.css/animate.css'
 import '@/index.sass'
 
-import './quasar'
-import 'vue-front-lib2/lib/vue-front-lib2.css'
-import ViewFrontLib, { fuga, hoge } from 'vue-front-lib2'
+import '@/quasar'
+import { i18n, initI18n } from '@/base/i18n'
+import { initRouter, router } from '@/base/router'
 import AppPage from '@/index.vue'
 import Component from 'vue-class-component'
 import Vue from 'vue'
 
-Vue.use(ViewFrontLib)
-hoge()
-fuga()
-
 Component.registerHooks(['beforeRouteEnter', 'beforeRouteLeave', 'beforeRouteUpdate'])
 
 async function init() {
+  initRouter()
+  await initI18n()
+
   new Vue({
     el: '#app',
     render: h => h(AppPage),
+    router,
+    i18n,
   })
 }
 init()

@@ -1,6 +1,6 @@
 .eslintrc.js
 .idea/
-dist/
+example/
 node_modules/
 package.json
 public/
