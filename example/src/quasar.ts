@@ -4,7 +4,7 @@ import {
   Loading,
   Notify,
   QAvatar,
-  // QBar,
+  QBar,
   QBtn,
   QBtnToggle,
   QCard,
@@ -38,8 +38,8 @@ import {
   Quasar,
   Ripple,
 } from 'quasar'
+import { components, plugins } from 'vue-front-lib2/src/quasar'
 import Vue from 'vue'
-import { components } from 'vue-front-lib2/src/quasar'
 
 Vue.use(Quasar, {
   components: {
@@ -48,18 +48,18 @@ Vue.use(Quasar, {
     // QAvatar,
     // QBar,
     // QBtn,
-    // QBtnToggle,
+    QBtnToggle,
     QCard,
     QCardActions,
     QCardSection,
     // QCheckbox,
-    // QDialog,
+    QDialog,
     QDrawer,
     QExpansionItem,
-    // QForm,
+    QForm,
     QHeader,
     // QIcon,
-    // QImg,
+    QImg,
     QInput,
     QItem,
     QItemLabel,
@@ -67,7 +67,7 @@ Vue.use(Quasar, {
     QLayout,
     // QLinearProgress,
     QList,
-    // QMenu,
+    QMenu,
     QPage,
     QPageContainer,
     QScrollArea,
@@ -87,7 +87,7 @@ Vue.use(Quasar, {
     Ripple,
   },
   plugins: {
-    Dialog,
+    ...plugins,
     Loading,
     Notify,
   },

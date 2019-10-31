@@ -9,7 +9,7 @@ import { Component, Model } from 'vue-property-decorator'
 import { BaseComponent } from '@/components'
 import { mixins } from 'vue-class-component'
 
-@Component({ name: 'custom-checkbox' })
+@Component
 export default class CustomCheckbox extends mixins(BaseComponent) {
   @Model('change')
   checked: boolean = false

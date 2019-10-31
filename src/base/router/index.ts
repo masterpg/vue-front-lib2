@@ -1,14 +1,22 @@
-import { Route } from 'vue-router/types/router'
+import { NavigationGuard, Route } from 'vue-router/types/router'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { i18n } from '../i18n'
 const assign = require('lodash/assign')
 
 Vue.use(VueRouter)
 
-let router!: BaseRouter
+export let router!: BaseRouter
+
+let isBeforeEachSet = false
 
 export function setRouter(value: BaseRouter): void {
   router = value
+  if (!isBeforeEachSet) {
+    router.beforeEach((to, from, next) => {
+      next()
+    })
+  }
 }
 
 export abstract class ViewRoute<T extends ViewRoute = any> {
@@ -31,6 +39,15 @@ export abstract class ViewRoute<T extends ViewRoute = any> {
 }
 
 export abstract class BaseRouter extends VueRouter {
+  beforeEach(guard: NavigationGuard): Function {
+    isBeforeEachSet = true
+    return super.beforeEach((to, from, next) => {
+      i18n.load().then(() => {
+        guard(to, from, next)
+      })
+    })
+  }
+
   /**
    * ダイアログを開くための情報をURLに付与して遷移します。
    * 例: https://example.com/views/abc-page?dialogName=signIn&dialogParams=%257B%2522account%2522%253A%2522taro%2522%257D

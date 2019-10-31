@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { Component, Prop } from 'vue-property-decorator'
-import { BaseComponent } from "./base";
+import { BaseComponent } from './base'
 
 @Component({
   name: 'hello-world-one',

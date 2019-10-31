@@ -23,7 +23,7 @@ import { BaseComponent, ResizableMixin } from '@/components'
 import { Component, Prop } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
 
-@Component({ name: 'greet-message' })
+@Component
 export default class GreetMessage extends mixins(BaseComponent, ResizableMixin) {
   @Prop({ default: '' })
   message!: string

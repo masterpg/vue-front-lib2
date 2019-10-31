@@ -77,7 +77,6 @@ interface Post {
 }
 
 @Component({
-  name: 'abc-page',
   components: { GreetMessage, CustomCheckbox, CustomInput },
 })
 export default class AbcPage extends mixins(BaseComponent, ResizableMixin) {

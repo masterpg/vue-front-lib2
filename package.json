@@ -9,7 +9,6 @@
     "url": "https://github.com/masterpg/vue-front-lib2.git"
   },
   "files": [
-    "scripts",
     "src"
   ],
   "scripts": {
