@@ -12383,7 +12383,7 @@ vue-eslint-parser@^5.0.0:
 
 "vue-front-lib2@https://github.com/masterpg/vue-front-lib2.git":
   version "0.0.1"
-  resolved "https://github.com/masterpg/vue-front-lib2.git#39eb6de8dfafea136e50ddf88083bca851b2b137"
+  resolved "https://github.com/masterpg/vue-front-lib2.git#4874617f66b1ead15e5592138f3acd398f78e7ca"
   dependencies:
     "@quasar/extras" "^1.3.2"
     "@webcomponents/webcomponentsjs" "^2.3.0"
@@ -12534,7 +12534,7 @@ wcwidth@^1.0.1:
 
 "web-base-lib@https://github.com/masterpg/web-base-lib.git":
   version "0.0.1"
-  resolved "https://github.com/masterpg/web-base-lib.git#877b3dec8372b804732e7b5fb99b496794cf0389"
+  resolved "https://github.com/masterpg/web-base-lib.git#762b98e4bd1f069424279c317a0f18133c67384c"
 
 webauth@^1.1.0:
   version "1.1.0"
