@@ -1,7 +1,7 @@
 {
   "name": "vue-front-lib2-example",
   "scripts": {
-    "dev:front-lib": "../scripts/dev.sh --nodedir ./node_modules",
+    "dev:front-lib": "node ./node_modules/vue-front-lib2/tools/lndir.js ../src ./node_modules/vue-front-lib2/src",
     "watch:front-lib": "npm run dev:front-lib -- --watch",
     "build:dev": "npm run dev:front-lib && vue-cli-service build --mode development",
     "build:stg": "vue-cli-service build --mode staging",

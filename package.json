@@ -59,10 +59,13 @@
     "@vue/eslint-config-typescript": "^4.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-plugin-transform-imports": "1.5.0",
+    "chokidar": "^3.2.3",
     "copy-webpack-plugin": "^5.0.4",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.2.3",
+    "fs-extra": "^8.1.0",
+    "glob": "^7.1.5",
     "node-sass": "^4.13.0",
     "onchange": "^6.1.0",
     "prettier": "^1.18.2",
@@ -71,6 +74,7 @@
     "testdouble-jest": "^2.0.0",
     "typescript": "~3.5.3",
     "vue-cli-plugin-quasar": "^1.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "yargs": "^14.2.0"
   }
 }

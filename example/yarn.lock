@@ -12383,7 +12383,7 @@ vue-eslint-parser@^5.0.0:
 
 "vue-front-lib2@https://github.com/masterpg/vue-front-lib2.git":
   version "0.0.1"
-  resolved "https://github.com/masterpg/vue-front-lib2.git#0fa13e83d5ad805f83b455dcebcd9cf927f1944b"
+  resolved "https://github.com/masterpg/vue-front-lib2.git#39eb6de8dfafea136e50ddf88083bca851b2b137"
   dependencies:
     "@quasar/extras" "^1.3.2"
     "@webcomponents/webcomponentsjs" "^2.3.0"
