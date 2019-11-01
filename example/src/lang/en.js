@@ -1,4 +1,6 @@
-export default {
+const merge = require('lodash/merge')
+
+export default merge(require('vue-front-lib2/src/lang/en').default, {
   common: {
     create: 'Create',
     cancel: 'Cancel',
@@ -17,4 +19,20 @@ export default {
     offline: 'No internet connection found. App is running in offline mode.',
     error: 'Error during service worker registration: {error}',
   },
-}
+  storage: {
+    createFolder: 'Create folder',
+    uploadFiles: 'Upload files',
+    uploadFolder: 'Upload folder',
+    folderName: 'Folder name',
+    folderNameIsRequired: 'Folder name is a required.',
+    slashIsUnusable: '"/" cannot be used.',
+    creationFolderFailed: 'Creation of the folder failed.',
+    deletionItemsFailed: 'Deletion of the items failed.',
+    deleteItems: 'Delete items',
+    deleteItemQ: 'Delete "{name}"?',
+    deleteFilesQ: 'Delete {fileNum} files?',
+    deleteFoldersQ: 'Delete {folderNum} folders?',
+    deleteFilesAndFoldersQ: 'Delete {fileNum} and {folderNum} folders?',
+    uploading: 'Uploading',
+  },
+})

@@ -74,7 +74,7 @@ const isFunction = require('lodash/isFunction')
 const isBoolean = require('lodash/isBoolean')
 const isString = require('lodash/isString')
 
-@Component({ name: 'comp-tree-node' })
+@Component
 export default class CompTreeNode<NodeItem extends CompTreeNodeItem = any> extends BaseComponent {
   //----------------------------------------------------------------------
   //

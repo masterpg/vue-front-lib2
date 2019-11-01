@@ -208,10 +208,10 @@ export default class AppPage extends mixins(BaseComponent, ResizableMixin) {
       title: 'Shop',
       path: router.views.demo.shop.path,
     },
-    // {
-    //   title: 'Cloud Storage',
-    //   path: router.views.demo.storage.path,
-    // },
+    {
+      title: 'Cloud Storage',
+      path: router.views.demo.storage.path,
+    },
   ]
 
   private m_componentsExpanded: boolean = true

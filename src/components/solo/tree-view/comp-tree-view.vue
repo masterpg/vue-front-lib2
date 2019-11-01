@@ -49,7 +49,7 @@ const isFunction = require('lodash/isFunction')
  * `--comp-tree-unselectable-color` | 非選択ノードの文字色です | `grey-9`
  * `--comp-tree-padding` | ツリービューのpaddingです | `10px`
  */
-@Component({ name: 'comp-tree-view' })
+@Component
 export default class CompTreeView<NodeData extends CompTreeNodeData = any> extends BaseComponent {
   //----------------------------------------------------------------------
   //

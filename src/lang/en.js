@@ -17,4 +17,8 @@ export default {
     offline: 'No internet connection found. App is running in offline mode.',
     error: 'Error during service worker registration: {error}',
   },
+  storage: {
+    uploadTotalRatio: 'Upload {0} / {1}',
+    uploadFileFailed: 'Upload failed.',
+  },
 }

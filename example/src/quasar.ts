@@ -38,7 +38,7 @@ import {
   Quasar,
   Ripple,
 } from 'quasar'
-import { components, plugins } from 'vue-front-lib2/src/quasar'
+import { components, config, directives, plugins } from 'vue-front-lib2/src/quasar'
 import Vue from 'vue'
 
 Vue.use(Quasar, {

@@ -1,5 +1,5 @@
-import CompTreeNode from '@/components/solo/tree-view/comp-tree-node.vue'
-import CompTreeNodeItem from '@/components/solo/tree-view/comp-tree-node-item.vue'
+import CompTreeNode from './comp-tree-node.vue'
+import CompTreeNodeItem from './comp-tree-node-item.vue'
 import { Constructor } from '../../../types'
 
 export interface CompTreeNodeData {

@@ -17,4 +17,8 @@ export default {
     offline: 'インターネットの接続がみつかりません。アプリケーションはオフラインモードで実行しています。',
     error: 'Service Worker の登録でエラーが発生しました: {error}',
   },
+  storage: {
+    uploadTotalRatio: 'アップロード {0} / {1}',
+    uploadFileFailed: 'アップロード失敗',
+  },
 }

@@ -30,7 +30,7 @@ import { Component } from 'vue-property-decorator'
 const isBoolean = require('lodash/isBoolean')
 const isString = require('lodash/isString')
 
-@Component({ name: 'comp-tree-node-item' })
+@Component
 export default class CompTreeNodeItem<NodeData extends CompTreeNodeData = any> extends BaseComponent {
   //----------------------------------------------------------------------
   //
