@@ -81,13 +81,13 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, ResizableMixin } from '@/components'
+import { BaseComponent, Resizable } from '@/components'
 import { CartItem, CheckoutStatus, Product } from '@/store'
 import { Component } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
 
 @Component
-export default class ShopPage extends mixins(BaseComponent, ResizableMixin) {
+export default class ShopPage extends mixins(BaseComponent, Resizable) {
   //----------------------------------------------------------------------
   //
   //  Lifecycle hooks

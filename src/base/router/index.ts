@@ -50,61 +50,49 @@ export abstract class BaseRouter extends VueRouter {
 
   /**
    * ダイアログを開くための情報をURLに付与して遷移します。
-   * 例: https://example.com/views/abc-page?dialogName=signIn&dialogParams=%257B%2522account%2522%253A%2522taro%2522%257D
    *
-   * @param name ダイアログの名前
-   * @param params ダイアログに渡すパラメータ
+   * URLに付与するダイアログ情報の例:
+   *   https://example.com/views/abc-page?dialogName=signIn&dialogParams=%257B%2522account%2522%253A%2522taro%2522%257D
+   *
+   * @param dialogName ダイアログの名前
+   * @param dialogParams ダイアログに渡すパラメータ
    */
-  openDialog(name: string, params?: string | {} | any[]): void {
-    let dialogParams: {} | undefined
-    if (params) {
-      dialogParams = encodeURIComponent(JSON.stringify(params))
-    }
-    const query = assign({}, this.currentRoute.query, {
-      dialogName: name,
-      dialogParams,
-    })
-    this.push({
-      path: this.currentRoute.path,
-      query,
+  addDialogInfoToURL(dialogName: string, dialogParams?: any): void {
+    router.push({
+      path: router.currentRoute.path,
+      query: Object.assign({}, router.currentRoute.query, {
+        dialogName,
+        dialogParams: dialogParams ? encodeURIComponent(JSON.stringify(dialogParams)) : undefined,
+      }),
     })
   }
 
   /**
-   * ダイアログを開くための情報をURLから除去して遷移します。
-   *
-   * このメソッドはダイアログを閉じた際に使用することを想定しています。
-   * `openDialog()`でダイアログを開くと、URLにダイアログを開くための情報が
-   * URLに付与されます。この状態でブラウザをリロードするとアプリケーション
-   * 起動時にダイアログが開くことになります。
-   *
-   * このような挙動が望ましい場合もありますが、そうでない場合もあります。
-   * このメソッドを呼び出すと、URLからダイアログを開くための情報を除去するため、
-   * アプリケーションリロード時にダイアログが開くという挙動を回避することができます。
+   * URLに付与されているダイアログ情報を削除します。
    */
-  closeDialog(): void {
-    const query = assign({}, this.currentRoute.query)
+  removeDialogInfoFromURL(): void {
+    const query = Object.assign({}, router.currentRoute.query)
     delete query.dialogName
     delete query.dialogParams
-    this.push({
-      path: this.currentRoute.path,
+    router.push({
+      path: router.currentRoute.path,
       query,
     })
   }
 
   /**
-   * URLからダイアログを開くための情報を取得して返します。
-   * @param route
+   * URLに付与されているダイアログの情報を取得します。
+   * @params route
    */
-  getDialog(route: Route): { name: string; params?: {} } | undefined {
-    const name = route.query.dialogName as string | undefined
-    if (!name) return
+  getDialogInfo(route: Route): { dialogName: string; dialogParams?: any } | undefined {
+    const dialogName = route.query.dialogName as string | undefined
+    if (!dialogName) return
 
-    let params: {} | undefined
-    const paramsStr = route.query.dialogParams as string
-    if (paramsStr) {
-      params = JSON.parse(decodeURIComponent(paramsStr))
+    let dialogParams: {} | undefined
+    const paramStr = route.query.dialogParams as string
+    if (paramStr) {
+      dialogParams = JSON.parse(decodeURIComponent(paramStr))
     }
-    return { name, params }
+    return { dialogName, dialogParams }
   }
 }

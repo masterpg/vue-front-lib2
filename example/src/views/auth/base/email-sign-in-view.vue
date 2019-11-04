@@ -79,7 +79,7 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, ResizableMixin } from '@/components'
+import { BaseComponent, Resizable } from '@/components'
 import { Component } from 'vue-property-decorator'
 import { NoCache } from '@/base/decorators'
 import { QInput } from 'quasar'
@@ -89,7 +89,7 @@ const isEmail = require('validator/lib/isEmail')
 @Component({
   components: {},
 })
-export default class EmailSignInView extends mixins(BaseComponent, ResizableMixin) {
+export default class EmailSignInView extends mixins(BaseComponent, Resizable) {
   //----------------------------------------------------------------------
   //
   //  Lifecycle hooks

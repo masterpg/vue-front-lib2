@@ -1,13 +1,7 @@
-import { Component } from 'vue-property-decorator'
+import { BaseComponent } from './base-component'
+import { BaseDialog, Dialog } from './dialog'
 import { NoCache } from '../../base/decorators'
-import { ResizableMixin } from './resizable-mixin'
-import Vue from 'vue'
-
-/**
- * コンポーネントの基底クラスです。
- */
-@Component
-class BaseComponent extends Vue {}
+import { Resizable } from './resizable'
 
 /**
  * Mixinのサンプルです。
@@ -20,4 +14,4 @@ export const SampleMixin = <T extends new (...args: any[]) => {}>(superclass: T)
     }
   }
 
-export { BaseComponent, NoCache, ResizableMixin }
+export { BaseComponent, BaseDialog, Dialog, NoCache, Resizable }

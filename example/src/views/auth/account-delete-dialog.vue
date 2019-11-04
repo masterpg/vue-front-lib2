@@ -16,7 +16,7 @@
 </style>
 
 <template>
-  <q-dialog v-model="m_opened" persistent>
+  <q-dialog v-model="opened" persistent>
     <!-- アカウント削除ビュー -->
     <q-card v-if="m_viewType.accountDelete.visible" class="container" :class="{ pc: screenSize.pc, tab: screenSize.tab, sp: screenSize.sp }">
       <!-- タイトル -->
@@ -65,11 +65,10 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, ResizableMixin } from '@/components'
-import { Component, Watch } from 'vue-property-decorator'
 import { EmailSignInView, ProviderListView } from '@/views/auth/base'
 import { AuthProviderType } from '@/logic'
-import { mixins } from 'vue-class-component'
+import { BaseDialog } from '@/components'
+import { Component } from 'vue-property-decorator'
 
 @Component({
   components: {
@@ -77,21 +76,12 @@ import { mixins } from 'vue-class-component'
     EmailSignInView,
   },
 })
-export default class AccountDeleteDialog extends mixins(BaseComponent, ResizableMixin) {
+export default class AccountDeleteDialog extends BaseDialog<void, void> {
   //----------------------------------------------------------------------
   //
   //  Variables
   //
   //----------------------------------------------------------------------
-
-  private m_opened: boolean = false
-
-  @Watch('m_opened')
-  private m_openedChanged(newValue: boolean, oldValue: boolean) {
-    if (!newValue) {
-      this.$emit('closed')
-    }
-  }
 
   private m_viewType = new ViewType()
 
@@ -105,13 +95,13 @@ export default class AccountDeleteDialog extends mixins(BaseComponent, Resizable
   //
   //----------------------------------------------------------------------
 
-  open(): void {
-    this.m_opened = true
+  open(): Promise<void> {
     this.m_visibleAccountDelete()
+    return this.openProcess()
   }
 
   close(): void {
-    this.m_opened = false
+    this.closeProcess()
   }
 
   //----------------------------------------------------------------------

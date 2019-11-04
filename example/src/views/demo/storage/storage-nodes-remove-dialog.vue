@@ -12,7 +12,7 @@
 </style>
 
 <template>
-  <q-dialog v-model="m_opened" @hide="m_dialogOnHide()">
+  <q-dialog v-model="opened" @hide="close()">
     <q-card class="container" :class="{ pc: screenSize.pc, tab: screenSize.tab, sp: screenSize.sp }">
       <!-- タイトル -->
       <q-card-section>
@@ -27,43 +27,31 @@
       <!-- ボタンエリア -->
       <q-card-section class="layout horizontal center end-justified">
         <!-- CANCELボタン -->
-        <q-btn flat rounded color="primary" :label="$t('common.cancel')" @click="m_close(false)" />
+        <q-btn flat rounded color="primary" :label="$t('common.cancel')" @click="close()" />
         <!-- DELETEボタン -->
-        <q-btn flat rounded color="primary" :label="$t('common.delete')" @click="m_close(true)" />
+        <q-btn flat rounded color="primary" :label="$t('common.delete')" @click="close(true)" />
       </q-card-section>
     </q-card>
   </q-dialog>
 </template>
 
 <script lang="ts">
-import { BaseComponent, CompTreeNode, ResizableMixin } from '@/components'
-import { Component, Watch } from 'vue-property-decorator'
+import { BaseDialog, CompTreeNode } from '@/components'
+import { Component } from 'vue-property-decorator'
 import { StorageNodeType } from '@/logic'
 import StorageTreeNodeItem from '@/views/demo/storage/storage-tree-node-item.vue'
-import { mixins } from 'vue-class-component'
+
+export type RemovingNodes = CompTreeNode<StorageTreeNodeItem>[]
 
 @Component
-export default class StorageNodesRemoveDialog extends mixins(BaseComponent, ResizableMixin) {
+export default class StorageNodesRemoveDialog extends BaseDialog<RemovingNodes, boolean> {
   //----------------------------------------------------------------------
   //
   //  Variables
   //
   //----------------------------------------------------------------------
 
-  private m_opened: boolean = false
-
-  @Watch('m_opened')
-  private m_openedChanged(newValue: boolean, oldValue: boolean) {
-    if (!newValue) {
-      this.$emit('closed')
-    }
-  }
-
-  private m_resultResolve!: (confirmed: boolean) => void
-
-  private m_resultConfirmed: boolean = false
-
-  private m_nodes: CompTreeNode<StorageTreeNodeItem>[] = []
+  private m_nodes: RemovingNodes = []
 
   private get m_message(): string {
     if (this.m_nodes.length === 1) {
@@ -95,34 +83,13 @@ export default class StorageNodesRemoveDialog extends mixins(BaseComponent, Resi
   //
   //----------------------------------------------------------------------
 
-  open(nodes: CompTreeNode<StorageTreeNodeItem>[]): Promise<boolean> {
+  open(nodes: RemovingNodes): Promise<boolean> {
     this.m_nodes = nodes
-    this.m_opened = true
-    return new Promise<boolean>(resolve => {
-      this.m_resultResolve = resolve
-    })
+    return this.openProcess(nodes)
   }
 
-  //----------------------------------------------------------------------
-  //
-  //  Internal methods
-  //
-  //----------------------------------------------------------------------
-
-  private m_close(confirmed: boolean): void {
-    this.m_resultConfirmed = confirmed
-    this.m_opened = false
-  }
-
-  //----------------------------------------------------------------------
-  //
-  //  Event listeners
-  //
-  //----------------------------------------------------------------------
-
-  m_dialogOnHide() {
-    this.m_resultResolve(this.m_resultConfirmed)
-    this.m_resultConfirmed = false
+  close(isConfirmed?: boolean): void {
+    this.closeProcess(!!isConfirmed)
   }
 }
 </script>

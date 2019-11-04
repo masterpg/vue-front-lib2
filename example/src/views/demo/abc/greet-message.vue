@@ -19,12 +19,12 @@ span
 </template>
 
 <script lang="ts">
-import { BaseComponent, ResizableMixin } from '@/components'
+import { BaseComponent, Resizable } from '@/components'
 import { Component, Prop } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
 
 @Component
-export default class GreetMessage extends mixins(BaseComponent, ResizableMixin) {
+export default class GreetMessage extends mixins(BaseComponent, Resizable) {
   @Prop({ default: '' })
   message!: string
 

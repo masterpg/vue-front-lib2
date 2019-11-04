@@ -131,36 +131,26 @@
       </transition>
     </q-page-container>
 
-    <sign-in-dialog ref="signInDialog" @closed="m_dialogOnClosed"></sign-in-dialog>
-    <email-change-dialog ref="emailChangeDialog" @closed="m_dialogOnClosed"></email-change-dialog>
-    <account-delete-dialog ref="accountDeleteDialog" @closed="m_dialogOnClosed"></account-delete-dialog>
+    <history-dialog-manager ref="historyDialogManager" />
   </q-layout>
 </template>
 
 <script lang="ts">
-import { AccountDeleteDialog, EmailChangeDialog, SignInDialog } from '@/views/auth'
-import { BaseComponent, ResizableMixin } from '@/components'
-import { Component, Watch } from 'vue-property-decorator'
+import { BaseComponent, Resizable } from '@/components'
+import { EmailChangeDialog, SignInDialog } from '@/views/auth'
+import { Component } from 'vue-property-decorator'
+import { HistoryDialogManager } from '@/views/collab'
 import { NoCache } from '@/base/decorators'
-import { Route } from 'vue-router/types/router'
 import { User } from '@/logic'
 import { mixins } from 'vue-class-component'
 import { router } from '@/base/router'
 
-enum DialogType {
-  SignIn = 'signIn',
-  AccountDelete = 'accountDelete',
-  EmailChange = 'emailChange',
-}
-
 @Component({
   components: {
-    SignInDialog,
-    EmailChangeDialog,
-    AccountDeleteDialog,
+    HistoryDialogManager,
   },
 })
-export default class AppPage extends mixins(BaseComponent, ResizableMixin) {
+export default class AppPage extends mixins(BaseComponent, Resizable) {
   //----------------------------------------------------------------------
   //
   //  Lifecycle hooks
@@ -171,24 +161,6 @@ export default class AppPage extends mixins(BaseComponent, ResizableMixin) {
     this.m_leftDrawerOpen = this.$q.platform.is.desktop
 
     await this.$logic.shop.pullProducts()
-  }
-
-  @Watch('$route')
-  private m_$routeOnChange(to: Route, from: Route) {
-    const dialog = router.getDialog(to)
-    if (dialog) {
-      switch (dialog.name) {
-        case DialogType.SignIn:
-          this.$nextTick(() => this.m_signInDialog.open())
-          break
-        case DialogType.EmailChange:
-          this.$nextTick(() => this.m_emailChangeDialog.open())
-          break
-        case DialogType.AccountDelete:
-          this.$nextTick(() => this.m_userDeleteDialog.open())
-          break
-      }
-    }
   }
 
   //----------------------------------------------------------------------
@@ -238,18 +210,8 @@ export default class AppPage extends mixins(BaseComponent, ResizableMixin) {
   //--------------------------------------------------
 
   @NoCache
-  private get m_signInDialog(): SignInDialog {
-    return this.$refs.signInDialog as any
-  }
-
-  @NoCache
-  private get m_emailChangeDialog(): EmailChangeDialog {
-    return this.$refs.emailChangeDialog as any
-  }
-
-  @NoCache
-  private get m_userDeleteDialog(): AccountDeleteDialog {
-    return this.$refs.accountDeleteDialog as any
+  private get m_historyDialogManager(): HistoryDialogManager {
+    return this.$refs.historyDialogManager as any
   }
 
   //----------------------------------------------------------------------
@@ -259,31 +221,10 @@ export default class AppPage extends mixins(BaseComponent, ResizableMixin) {
   //----------------------------------------------------------------------
 
   /**
-   * サインインダイアログを表示します。
-   */
-  private m_showSignInDialog(): void {
-    router.openDialog(DialogType.SignIn)
-  }
-
-  /**
    * サインアウトを行います。
    */
   private async m_signOut(): Promise<void> {
     await this.$logic.auth.signOut()
-  }
-
-  /**
-   * メールアドレス変更ダイアログを表示します。
-   */
-  private m_showEmailChangeDialog(): void {
-    router.openDialog(DialogType.EmailChange)
-  }
-
-  /**
-   * ユーザーアカウントを削除します。
-   */
-  private async m_deleteAccount(): Promise<void> {
-    router.openDialog(DialogType.AccountDelete)
   }
 
   //----------------------------------------------------------------------
@@ -296,25 +237,19 @@ export default class AppPage extends mixins(BaseComponent, ResizableMixin) {
     console.log('app-view:', e)
   }
 
-  private m_dialogOnClosed() {
-    router.closeDialog()
-  }
-
-  private m_signInMenuItemOnClick() {
-    this.m_showSignInDialog()
-  }
-
   private async m_signOutMenuItemOnClick() {
     await this.m_signOut()
   }
 
-  private async m_changeEmailMenuItemOnClick() {
-    await this.m_showEmailChangeDialog()
+  private m_signInMenuItemOnClick() {
+    this.m_historyDialogManager.open(SignInDialog)
   }
 
-  private async m_deleteAccountMenuItemOnClick() {
-    await this.m_deleteAccount()
+  private m_changeEmailMenuItemOnClick() {
+    this.m_historyDialogManager.open(EmailChangeDialog)
   }
+
+  private async m_deleteAccountMenuItemOnClick() {}
 }
 </script>
 

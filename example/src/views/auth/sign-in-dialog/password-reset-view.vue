@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, ResizableMixin } from '@/components'
+import { BaseComponent, Resizable } from '@/components'
 import { Component, Prop } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
 import { router } from '@/base/router'
@@ -59,7 +59,7 @@ import { router } from '@/base/router'
 @Component({
   components: {},
 })
-export default class PasswordResetView extends mixins(BaseComponent, ResizableMixin) {
+export default class PasswordResetView extends mixins(BaseComponent, Resizable) {
   //----------------------------------------------------------------------
   //
   //  Properties
@@ -105,7 +105,6 @@ export default class PasswordResetView extends mixins(BaseComponent, ResizableMi
   }
 
   private m_close(): void {
-    router.closeDialog()
     this.$emit('closed')
   }
 }

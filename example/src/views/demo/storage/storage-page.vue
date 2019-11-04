@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, CompStorageUploadProgressFloat, CompTreeNode, CompTreeNodeItem, CompTreeView, NoCache, ResizableMixin } from '@/components'
+import { BaseComponent, CompStorageUploadProgressFloat, CompTreeNode, CompTreeNodeItem, CompTreeView, NoCache, Resizable } from '@/components'
 import { StorageNode, StorageNodeBag, StorageNodeType } from '@/logic'
 import StorageTreeNodeItem, { StorageTreeNodeData } from '@/views/demo/storage/storage-tree-node-item.vue'
 import { Component } from 'vue-property-decorator'
@@ -62,7 +62,7 @@ import { mixins } from 'vue-class-component'
 @Component({
   components: { CompTreeView, CompTreeNode, CompTreeNodeItem, StorageDirCreateDialog, StorageNodesRemoveDialog, CompStorageUploadProgressFloat },
 })
-export default class StoragePage extends mixins(BaseComponent, ResizableMixin) {
+export default class StoragePage extends mixins(BaseComponent, Resizable) {
   //----------------------------------------------------------------------
   //
   //  Lifecycle hooks

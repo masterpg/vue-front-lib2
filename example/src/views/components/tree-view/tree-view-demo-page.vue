@@ -52,7 +52,7 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, NoCache, ResizableMixin } from 'vue-front-lib2/src/components/base'
+import { BaseComponent, NoCache, Resizable } from 'vue-front-lib2/src/components/base'
 import {
   CompCheckboxNodeItem,
   CompCheckboxTreeNodeData,
@@ -66,7 +66,7 @@ import { mixins } from 'vue-class-component'
 @Component({
   components: { CompTreeView, CompTreeNode, CompTreeNodeItem, CheckboxNodeItem: CompCheckboxNodeItem },
 })
-export default class TreeViewDemoPage extends mixins(BaseComponent, ResizableMixin) {
+export default class TreeViewDemoPage extends mixins(BaseComponent, Resizable) {
   //----------------------------------------------------------------------
   //
   //  Lifecycle hooks

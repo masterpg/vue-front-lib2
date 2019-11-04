@@ -108,7 +108,7 @@ import {AuthProviderType} from '../../logic'
 </template>
 
 <script lang="ts">
-import { BaseComponent, ResizableMixin } from '@/components'
+import { BaseComponent, Resizable } from '@/components'
 import { Component, Prop } from 'vue-property-decorator'
 import { AuthProviderType } from '@/logic'
 import { mixins } from 'vue-class-component'
@@ -116,7 +116,7 @@ import { mixins } from 'vue-class-component'
 @Component({
   components: {},
 })
-export default class ProviderListView extends mixins(BaseComponent, ResizableMixin) {
+export default class ProviderListView extends mixins(BaseComponent, Resizable) {
   //----------------------------------------------------------------------
   //
   //  Properties

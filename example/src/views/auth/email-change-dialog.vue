@@ -19,7 +19,7 @@
 </style>
 
 <template>
-  <q-dialog v-model="m_opened" persistent>
+  <q-dialog v-model="opened" persistent>
     <!-- サインインビュー -->
     <email-sign-in-view v-if="m_viewType === 'signIn'" @signed-in="m_signInViewOnSignedIn()" @closed="close()" />
 
@@ -87,12 +87,11 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, ResizableMixin } from '@/components'
-import { Component, Watch } from 'vue-property-decorator'
+import { BaseDialog } from '@/components'
+import { Component } from 'vue-property-decorator'
 import { EmailSignInView } from '@/views/auth/base'
 import { NoCache } from '@/base/decorators'
 import { QInput } from 'quasar'
-import { mixins } from 'vue-class-component'
 const isEmail = require('validator/lib/isEmail')
 
 @Component({
@@ -100,21 +99,12 @@ const isEmail = require('validator/lib/isEmail')
     EmailSignInView,
   },
 })
-export default class EmailChangeDialog extends mixins(BaseComponent, ResizableMixin) {
+export default class EmailChangeDialog extends BaseDialog<void, void> {
   //----------------------------------------------------------------------
   //
   //  Variables
   //
   //----------------------------------------------------------------------
-
-  private m_opened: boolean = false
-
-  @Watch('m_opened')
-  private m_openedChanged(newValue: boolean, oldValue: boolean) {
-    if (!newValue) {
-      this.$emit('closed')
-    }
-  }
 
   private m_viewType: 'signIn' | 'emailChange' | 'inVerification' = 'signIn'
 
@@ -139,15 +129,15 @@ export default class EmailChangeDialog extends mixins(BaseComponent, ResizableMi
   //
   //----------------------------------------------------------------------
 
-  open(): void {
-    this.m_opened = true
+  open(): Promise<void> {
     this.m_inputEmail = ''
     this.m_clearErrorMessage()
     this.m_viewType = 'signIn'
+    return this.openProcess()
   }
 
   close(): void {
-    this.m_opened = false
+    this.closeProcess()
   }
 
   //----------------------------------------------------------------------

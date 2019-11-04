@@ -106,7 +106,7 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, ResizableMixin } from '@/components'
+import { BaseComponent, Resizable } from '@/components'
 import { AuthProviderType } from '@/logic'
 import { Component } from 'vue-property-decorator'
 import { NoCache } from '@/base/decorators'
@@ -121,7 +121,7 @@ const isEmail = require('validator/lib/isEmail')
     PasswordResetView,
   },
 })
-export default class EmailAuthView extends mixins(BaseComponent, ResizableMixin) {
+export default class EmailAuthView extends mixins(BaseComponent, Resizable) {
   //----------------------------------------------------------------------
   //
   //  Lifecycle hooks
@@ -284,7 +284,7 @@ export default class EmailAuthView extends mixins(BaseComponent, ResizableMixin)
    */
   private m_inVerification(): void {
     this.m_viewType = 'inVerification'
-    router.closeDialog()
+    router.removeDialogInfoFromURL()
   }
 
   /**
