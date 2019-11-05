@@ -7,8 +7,8 @@
 </template>
 
 <script lang="ts">
-import { AccountDeleteDialog, EmailChangeDialog, SignInDialog } from '@/views/auth'
-import { BaseHistoryDialogManager } from 'vue-front-lib2/src/components/base/dialog'
+import { AccountDeleteDialog, EmailChangeDialog, SignInDialog } from '@/components/complex/auth'
+import { BaseHistoryDialogManager } from 'vue-front-lib2/src/components'
 import { Component } from 'vue-property-decorator'
 import { Dialog } from '@/components'
 

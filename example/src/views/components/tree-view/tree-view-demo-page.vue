@@ -52,14 +52,16 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, NoCache, Resizable } from 'vue-front-lib2/src/components/base'
 import {
+  BaseComponent,
   CompCheckboxNodeItem,
   CompCheckboxTreeNodeData,
   CompTreeNode,
   CompTreeNodeItem,
   CompTreeView,
-} from 'vue-front-lib2/src/components/solo/tree-view'
+  NoCache,
+  Resizable,
+} from '@/components'
 import { Component } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
 

@@ -1,7 +1,7 @@
 import { BaseComponent } from './base-component'
-import { Constructor } from "../../types";
+import { Constructor } from '../../types'
 import { Resizable } from './resizable'
-import { Route } from "vue-router";
+import { Route } from 'vue-router'
 import Vue from 'vue'
 import { Watch } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
@@ -116,7 +116,7 @@ export abstract class BaseHistoryDialogManager extends Vue {
     const dialog = this.dialogs[info.dialogName]
     if (!dialog) {
       console.warn(`There is no dialog named ${info.dialogName}.`)
-      return;
+      return
     }
 
     dialog.open(info.dialogParams).then(() => {

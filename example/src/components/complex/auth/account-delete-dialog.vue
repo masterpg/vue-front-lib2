@@ -1,5 +1,5 @@
 <style lang="sass" scoped>
-@import '../../styles/app.variables'
+@import '../../../styles/app.variables'
 
 .container
   &.pc, &.tab
@@ -65,7 +65,7 @@
 </template>
 
 <script lang="ts">
-import { EmailSignInView, ProviderListView } from '@/views/auth/base'
+import { EmailSignInView, ProviderListView } from '@/components/complex/auth/base'
 import { AuthProviderType } from '@/logic'
 import { BaseDialog } from '@/components'
 import { Component } from 'vue-property-decorator'

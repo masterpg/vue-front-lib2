@@ -1,5 +1,5 @@
 <style lang="sass" scoped>
-@import '../../../styles/app.variables'
+@import '../../../../styles/app.variables'
 
 .container
   &.pc, &.tab
@@ -110,7 +110,7 @@ import { BaseComponent, Resizable } from '@/components'
 import { AuthProviderType } from '@/logic'
 import { Component } from 'vue-property-decorator'
 import { NoCache } from '@/base/decorators'
-import PasswordResetView from '@/views/auth/sign-in-dialog/password-reset-view.vue'
+import PasswordResetView from '@/components/complex/auth/sign-in-dialog/password-reset-view.vue'
 import { QInput } from 'quasar'
 import { mixins } from 'vue-class-component'
 import { router } from '@/base/router'

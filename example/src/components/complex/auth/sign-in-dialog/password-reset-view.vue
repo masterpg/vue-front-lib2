@@ -1,5 +1,5 @@
 <style lang="sass" scoped>
-@import '../../../styles/app.variables'
+@import '../../../../styles/app.variables'
 
 .container
   &.pc, &.tab
@@ -54,7 +54,6 @@
 import { BaseComponent, Resizable } from '@/components'
 import { Component, Prop } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
-import { router } from '@/base/router'
 
 @Component({
   components: {},

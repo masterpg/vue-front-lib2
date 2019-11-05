@@ -1,5 +1,5 @@
 <style lang="sass" scoped>
-@import '../../styles/app.variables'
+@import '../../../styles/app.variables'
 
 .container
   &.pc, &.tab
@@ -89,7 +89,7 @@
 <script lang="ts">
 import { BaseDialog } from '@/components'
 import { Component } from 'vue-property-decorator'
-import { EmailSignInView } from '@/views/auth/base'
+import { EmailSignInView } from '@/components/complex/auth/base'
 import { NoCache } from '@/base/decorators'
 import { QInput } from 'quasar'
 const isEmail = require('validator/lib/isEmail')

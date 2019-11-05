@@ -17,8 +17,8 @@
 <script lang="ts">
 import { BaseDialog } from '@/components'
 import { Component } from 'vue-property-decorator'
-import EmailAuthView from '@/views/auth/sign-in-dialog/email-auth-view.vue'
-import ProviderListView from '@/views/auth/base/provider-list-view.vue'
+import EmailAuthView from '@/components/complex/auth/sign-in-dialog/email-auth-view.vue'
+import ProviderListView from '@/components/complex/auth/base/provider-list-view.vue'
 import { router } from '@/base/router'
 
 @Component({

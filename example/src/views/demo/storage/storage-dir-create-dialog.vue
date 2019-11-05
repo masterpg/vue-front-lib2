@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { BaseDialog, CompTreeNode, NoCache, Resizable } from '@/components'
+import { BaseDialog, CompTreeNode, NoCache } from '@/components'
 import { Component } from 'vue-property-decorator'
 import { QInput } from 'quasar'
 import StorageTreeNodeItem from '@/views/demo/storage/storage-tree-node-item.vue'
@@ -57,8 +57,6 @@ export type AddingDirParentNode = CompTreeNode<StorageTreeNodeItem>
 
 @Component
 export default class StorageDirCreateDialog extends BaseDialog<AddingDirParentNode, string> {
-  protected readonly historyMode = true
-
   //----------------------------------------------------------------------
   //
   //  Variables

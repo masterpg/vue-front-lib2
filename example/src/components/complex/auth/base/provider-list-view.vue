@@ -1,6 +1,6 @@
 import {AuthProviderType} from '../../logic'
 <style lang="sass" scoped>
-@import '../../../styles/app.variables'
+@import '../../../../styles/app.variables'
 
 .container
 

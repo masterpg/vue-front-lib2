@@ -136,10 +136,8 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, Resizable } from '@/components'
-import { EmailChangeDialog, SignInDialog } from '@/views/auth'
+import { BaseComponent, EmailChangeDialog, HistoryDialogManager, Resizable, SignInDialog } from '@/components'
 import { Component } from 'vue-property-decorator'
-import { HistoryDialogManager } from '@/views/collab'
 import { NoCache } from '@/base/decorators'
 import { User } from '@/logic'
 import { mixins } from 'vue-class-component'

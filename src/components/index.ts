@@ -1,3 +1,3 @@
 export * from './base'
-export * from './collab/storage'
-export * from './solo/tree-view'
+export * from './complex/storage'
+export * from './simple/tree-view'
