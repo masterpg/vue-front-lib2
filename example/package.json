@@ -1,12 +1,12 @@
 {
   "name": "vue-front-lib2-example",
   "scripts": {
-    "dev:front-lib": "node ./node_modules/web-base-lib/tools/lndir.js ../src ./node_modules/vue-front-lib2/src",
-    "watch:front-lib": "npm run dev:front-lib -- --watch",
-    "build:dev": "npm run dev:front-lib && vue-cli-service build --mode development",
+    "dev:lib": "node ./node_modules/web-base-lib/tools/lndir.js ../src ./node_modules/vue-front-lib2/src & node ./node_modules/web-base-lib/tools/lndir.js ../tests ./node_modules/vue-front-lib2/tests",
+    "watch:lib": "node ./node_modules/web-base-lib/tools/lndir.js ../src ./node_modules/vue-front-lib2/src --watch & node ./node_modules/web-base-lib/tools/lndir.js ../tests ./node_modules/vue-front-lib2/tests --watch",
+    "build:dev": "npm run dev:lib && vue-cli-service build --mode development",
     "build:stg": "vue-cli-service build --mode staging",
     "build": "vue-cli-service build --mode production",
-    "serve": "npm run dev:front-lib && npm run watch:front-lib & vue-cli-service serve --mode development",
+    "serve": "npm run dev:lib && npm run watch:lib & vue-cli-service serve --mode development",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "testcafe chrome:headless tests/e2e/**/*.test.ts -S -s screenshots --hostname localhost",
     "lint": "./node_modules/web-base-lib/tools/lint.sh",

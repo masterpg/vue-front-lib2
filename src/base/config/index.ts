@@ -6,7 +6,7 @@ export function setConfig(value: BaseConfig): void {
   config = value
 }
 
-interface FirebaseOptions {
+interface FirebaseConfig {
   apiKey: string
   authDomain: string
   databaseURL?: string
@@ -25,16 +25,16 @@ export interface Config {
     baseURL: string
   }
 
-  firebase: FirebaseOptions
+  firebase: FirebaseConfig
 }
 
 export abstract class BaseConfig implements Config {
-  constructor(firebaseOptions: FirebaseOptions) {
-    this.firebase = firebaseOptions
+  constructor(firebaseConfig: FirebaseConfig) {
+    this.firebase = firebaseConfig
     firebase.initializeApp(this.firebase!)
   }
 
-  readonly firebase: FirebaseOptions
+  readonly firebase: FirebaseConfig
 
   get api() {
     const apiEnv = {

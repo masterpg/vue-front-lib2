@@ -1,24 +1,46 @@
-import { APIContainer } from '@/api/types'
-import { GQLAPIContainer } from '@/api/gql'
-import { RESTAPIContainer } from '@/api/rest'
+import { AppAPIContainer } from '@/api/types'
+import { AppGQLAPIContainer } from '@/api/gql'
+import { AppRESTAPIContainer } from '@/api/rest'
 import { setAPI } from 'vue-front-lib2/src/api'
+
+//========================================================================
+//
+//  Internal
+//
+//========================================================================
 
 let apiType: 'gql' | 'rest' = 'gql'
 
-let gqlAPI: GQLAPIContainer
+let gqlAPI: AppGQLAPIContainer
 
-let restAPI: RESTAPIContainer
+let restAPI: AppRESTAPIContainer
 
-export let api: APIContainer
+//========================================================================
+//
+//  Public
+//
+//========================================================================
 
-export function initAPI(apiContainer?: APIContainer): void {
-  // TODO apiの型によって適切なapiTypeを設定する必要あり
-  if (apiContainer) {
-    api = apiContainer
-    setAPI(api)
-  } else {
+export let api: AppAPIContainer
+
+export function initAPI(apiContainer?: AppAPIContainer): void {
+  if (!apiContainer) {
     setAPIType(apiType)
+    return
   }
+
+  if (api instanceof AppGQLAPIContainer) {
+    apiType = 'gql'
+    gqlAPI = apiContainer as AppGQLAPIContainer
+    api = apiContainer
+  } else if (api instanceof AppRESTAPIContainer) {
+    apiType = 'rest'
+    restAPI = apiContainer as AppRESTAPIContainer
+    api = apiContainer
+  } else {
+    throw new Error('The argument "apiContainer" is invalid.')
+  }
+  setAPI(api)
 }
 
 export function getAPIType() {
@@ -28,9 +50,9 @@ export function getAPIType() {
 export function setAPIType(value: 'gql' | 'rest') {
   apiType = value
   if (apiType === 'gql') {
-    api = gqlAPI ? gqlAPI : new GQLAPIContainer()
+    api = gqlAPI ? gqlAPI : new AppGQLAPIContainer()
   } else {
-    api = restAPI ? restAPI : new RESTAPIContainer()
+    api = restAPI ? restAPI : new AppRESTAPIContainer()
   }
   setAPI(api)
 }

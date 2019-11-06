@@ -1,8 +1,8 @@
-import { APIAddCartItemInput, APICartItem, APIContainer, APIEditCartItemResponse, APIProduct, APIUpdateCartItemInput } from '@/api/types'
+import { APIAddCartItemInput, APICartItem, APIEditCartItemResponse, APIProduct, APIUpdateCartItemInput, AppAPIContainer } from '@/api/types'
 import { BaseGQLAPIContainer } from 'vue-front-lib2/src/api'
 import gql from 'graphql-tag'
 
-export class GQLAPIContainer extends BaseGQLAPIContainer implements APIContainer {
+export class AppGQLAPIContainer extends BaseGQLAPIContainer implements AppAPIContainer {
   async product(id: string): Promise<APIProduct | undefined> {
     const products = await this.products([id])
     return products.length === 1 ? products[0] : undefined

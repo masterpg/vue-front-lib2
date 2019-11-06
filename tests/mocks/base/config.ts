@@ -1,14 +1,14 @@
-import { BaseConfig, setConfig } from 'vue-front-lib2/src/base/config'
+import { BaseConfig, setConfig } from '../../../src/base/config'
 import firebaseConfig from '../../../firebase.config'
 
-export let config: AppConfig
+export let config: TestConfig
 
 export function initConfig(): void {
-  config = new AppConfig()
+  config = new TestConfig()
   setConfig(config)
 }
 
-class AppConfig extends BaseConfig {
+class TestConfig extends BaseConfig {
   constructor() {
     super(firebaseConfig)
   }

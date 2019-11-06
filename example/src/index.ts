@@ -2,6 +2,7 @@ import 'animate.css/animate.css'
 import '@/index.sass'
 
 import '@/quasar'
+import '@/quasar.extras'
 import { i18n, initI18n } from '@/base/i18n'
 import { initRouter, router } from '@/base/router'
 import AppPage from '@/index.vue'

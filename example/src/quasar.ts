@@ -79,10 +79,12 @@ Vue.use(Quasar, {
     // QTooltip,
   },
   config: {
+    ...config,
     notify: {},
     loading: {},
   },
   directives: {
+    ...directives,
     ClosePopup,
     Ripple,
   },

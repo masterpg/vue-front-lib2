@@ -6,7 +6,7 @@ import { BaseAPIContainer } from 'vue-front-lib2/src/api'
 //
 //----------------------------------------------------------------------
 
-export interface APIContainer extends BaseAPIContainer {
+export interface AppAPIContainer extends BaseAPIContainer {
   getSignedUploadUrls(params: { filePath: string; contentType?: string }[]): Promise<string[]>
 
   product(id: string): Promise<APIProduct | undefined>

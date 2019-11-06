@@ -1,7 +1,7 @@
-import { APIAddCartItemInput, APICartItem, APIContainer, APIEditCartItemResponse, APIProduct, APIUpdateCartItemInput } from '@/api/types'
+import { APIAddCartItemInput, APICartItem, APIEditCartItemResponse, APIProduct, APIUpdateCartItemInput, AppAPIContainer } from '@/api/types'
 import { BaseRESTAPIContainer } from 'vue-front-lib2/src/api'
 
-export class RESTAPIContainer extends BaseRESTAPIContainer implements APIContainer {
+export class AppRESTAPIContainer extends BaseRESTAPIContainer implements AppAPIContainer {
   async product(id: string): Promise<APIProduct | undefined> {
     const response = await this.get<APIProduct>(`products/${id}`)
     return response.data

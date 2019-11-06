@@ -2,7 +2,6 @@ import { NavigationGuard, Route } from 'vue-router/types/router'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { i18n } from '../i18n'
-const assign = require('lodash/assign')
 
 Vue.use(VueRouter)
 

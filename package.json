@@ -9,7 +9,8 @@
     "url": "https://github.com/masterpg/vue-front-lib2.git"
   },
   "files": [
-    "src"
+    "src",
+    "tests/helpers"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
