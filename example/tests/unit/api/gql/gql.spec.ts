@@ -1,4 +1,4 @@
-import { APIAddCartItemInput, APICartItem, APIEditCartItemResponse, APIProduct } from '@/api'
+import { APIAddCartItemInput, APICartItem, APIEditCartItemResponse, APIProduct } from '@/logic/api'
 import { api, initAPI } from '../../../mocks/api'
 const cloneDeep = require('lodash/cloneDeep')
 const isEmpty = require('lodash/isEmpty')

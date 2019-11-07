@@ -1,6 +1,6 @@
-import { AppGQLAPIContainer } from '@/api/gql'
+import { AppGQLAPIContainer } from '@/logic/api/gql'
 import { TestGQLAPIContainerMixin } from '../../helpers/api'
-import { initAPI as _initAPI } from '@/api'
+import { initAPI as _initAPI } from '@/logic/api'
 import { mix } from '@/base/mixin'
 
 class TestAPIContainer extends mix(AppGQLAPIContainer).with(TestGQLAPIContainerMixin) {}

@@ -1,6 +1,5 @@
 import { BaseDialog, BaseHistoryDialogManager, Dialog } from './dialog'
 import { BaseComponent } from './base-component'
-import { NoCache } from '../../base/decorators'
 import { Resizable } from './resizable'
 
 /**
@@ -14,4 +13,4 @@ export const SampleMixin = <T extends new (...args: any[]) => {}>(superclass: T)
     }
   }
 
-export { BaseComponent, BaseDialog, BaseHistoryDialogManager, Dialog, NoCache, Resizable }
+export { BaseComponent, BaseDialog, BaseHistoryDialogManager, Dialog, Resizable }

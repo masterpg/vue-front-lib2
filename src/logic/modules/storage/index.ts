@@ -4,8 +4,8 @@ import { AdminStorageUploadManager } from './admin-upload'
 import { BaseLogic } from '../../base'
 import { Component } from 'vue-property-decorator'
 import { UserStorageUploadManager } from './user-upload'
-import { api } from '../../../api'
-import { config } from '../../../base/config'
+import { api } from '../../api'
+import { config } from '../../../app/config'
 
 @Component
 export class StorageLogicImpl extends BaseLogic implements StorageLogic {

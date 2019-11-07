@@ -113,7 +113,7 @@ import { NoCache } from '@/base/decorators'
 import PasswordResetView from '@/components/complex/auth/sign-in-dialog/password-reset-view.vue'
 import { QInput } from 'quasar'
 import { mixins } from 'vue-class-component'
-import { router } from '@/base/router'
+import { router } from '@/app/router'
 const isEmail = require('validator/lib/isEmail')
 
 @Component({

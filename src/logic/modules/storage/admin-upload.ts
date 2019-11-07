@@ -1,5 +1,5 @@
 import { StorageFileUploader, StorageUploadManager, UploadFileParam } from './base'
-import { api } from '../../../api'
+import { api } from '../../api'
 import axios from 'axios'
 
 export class AdminStorageUploadManager extends StorageUploadManager {

@@ -3,9 +3,9 @@ import { BaseLogic } from '../../base'
 import { Component } from 'vue-property-decorator'
 import { Dialog } from 'quasar'
 import { NoCache } from '../../../base/decorators'
-import { api } from '../../../api'
-import { i18n } from '../../../base/i18n'
-import { store } from '../../../store'
+import { api } from '../../api'
+import { i18n } from '../../../app/i18n'
+import { store } from '../../store'
 const cloneDeep = require('lodash/cloneDeep')
 
 @Component

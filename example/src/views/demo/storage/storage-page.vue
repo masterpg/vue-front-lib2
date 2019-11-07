@@ -51,10 +51,11 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, CompStorageUploadProgressFloat, CompTreeNode, CompTreeNodeItem, CompTreeView, NoCache, Resizable } from '@/components'
+import { BaseComponent, CompStorageUploadProgressFloat, CompTreeNode, CompTreeNodeItem, CompTreeView, Resizable } from '@/components'
 import { StorageNode, StorageNodeBag, StorageNodeType } from '@/logic'
 import StorageTreeNodeItem, { StorageTreeNodeData } from '@/views/demo/storage/storage-tree-node-item.vue'
 import { Component } from 'vue-property-decorator'
+import { NoCache } from '../../../../../src/base/decorators'
 import StorageDirCreateDialog from '@/views/demo/storage/storage-dir-create-dialog.vue'
 import StorageNodesRemoveDialog from '@/views/demo/storage/storage-nodes-remove-dialog.vue'
 import { mixins } from 'vue-class-component'

@@ -1,5 +1,5 @@
 import { StorageFileUploader, StorageUploadManager, UploadFileParam } from './base'
-import { api } from '../../../api'
+import { api } from '../../api'
 import { removeEndSlash } from 'web-base-lib'
 
 export class UserStorageUploadManager extends StorageUploadManager {

@@ -52,17 +52,9 @@
 </template>
 
 <script lang="ts">
-import {
-  BaseComponent,
-  CompCheckboxNodeItem,
-  CompCheckboxTreeNodeData,
-  CompTreeNode,
-  CompTreeNodeItem,
-  CompTreeView,
-  NoCache,
-  Resizable,
-} from '@/components'
+import { BaseComponent, CompCheckboxNodeItem, CompCheckboxTreeNodeData, CompTreeNode, CompTreeNodeItem, CompTreeView, Resizable } from '@/components'
 import { Component } from 'vue-property-decorator'
+import { NoCache } from '@/base/decorators'
 import { mixins } from 'vue-class-component'
 
 @Component({

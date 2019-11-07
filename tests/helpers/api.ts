@@ -1,4 +1,4 @@
-import { BaseAPIContainer, BaseGQLAPIContainer } from '../../src/api'
+import { BaseAPIContainer, BaseGQLAPIContainer } from '../../src/logic/api'
 import { Constructor } from '../../src/types'
 import axios from 'axios'
 import gql from 'graphql-tag'

@@ -1,4 +1,4 @@
-import { CartItem, CheckoutStatus, Product } from '@/store'
+import { CartItem, CheckoutStatus, Product } from '@/logic/store'
 
 //----------------------------------------------------------------------
 //

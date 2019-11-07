@@ -62,11 +62,12 @@
 
 <script lang="ts">
 import * as treeViewUtils from './comp-tree-view-utils'
-import { BaseComponent, NoCache } from '../../base'
 import { ChildrenSortFunc, CompTreeNodeData, CompTreeNodeEditData } from './types'
+import { BaseComponent } from '../../base'
 import CompTreeNodeItem from './comp-tree-node-item.vue'
 import CompTreeView from './comp-tree-view.vue'
 import { Component } from 'vue-property-decorator'
+import { NoCache } from '../../../base/decorators'
 import { NodePropertyChangeDetail } from './comp-tree-view-utils'
 import Vue from 'vue'
 const isInteger = require('lodash/isInteger')

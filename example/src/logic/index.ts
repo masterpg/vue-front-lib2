@@ -1,5 +1,5 @@
 import { BaseLogicContainer, StorageUploadManager, setLogic } from 'vue-front-lib2/src/logic'
-import { getAPIType, setAPIType } from '@/api'
+import { getAPIType, setAPIType } from '@/logic/api'
 import { Component } from 'vue-property-decorator'
 import { ShopLogic } from '@/logic/types'
 import { ShopLogicImpl } from '@/logic/modules/shop'

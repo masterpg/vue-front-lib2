@@ -1,4 +1,4 @@
-import { APIStorageNode, api } from '../../../api'
+import { APIStorageNode, api } from '../../api'
 import { StorageNode, StorageNodeBag } from '../../types'
 import { removeEndSlash } from 'web-base-lib'
 

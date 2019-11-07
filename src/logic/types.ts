@@ -1,6 +1,6 @@
-import { APIStorageNodeType as StorageNodeType } from '../api'
+import { APIStorageNodeType as StorageNodeType } from './api'
 import { StorageUploadManager } from './modules/storage'
-import { User } from '../store'
+import { User } from './store'
 
 //----------------------------------------------------------------------
 //

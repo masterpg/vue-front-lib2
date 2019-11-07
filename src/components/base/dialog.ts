@@ -5,7 +5,7 @@ import { Route } from 'vue-router'
 import Vue from 'vue'
 import { Watch } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
-import { router } from '../../base/router'
+import { router } from '../../app/router'
 
 /**
  * ダイアログのインタフェースです。
