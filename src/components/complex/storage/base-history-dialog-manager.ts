@@ -1,8 +1,8 @@
-import { Constructor } from '../../../types'
+import { Constructor } from 'web-base-lib'
 import { Dialog } from '../../base'
 import { Route } from 'vue-router'
-import { Watch } from 'vue-property-decorator'
 import Vue from 'vue'
+import { Watch } from 'vue-property-decorator'
 import { router } from '../../../router'
 
 /**

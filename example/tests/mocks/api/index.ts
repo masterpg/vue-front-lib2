@@ -1,7 +1,7 @@
 import { AppGQLAPIContainer } from '@/logic/api/gql'
 import { TestGQLAPIContainerMixin } from '../../helpers/api'
 import { initAPI as _initAPI } from '@/logic/api'
-import { mix } from 'vue-front-lib2/src'
+import { mix } from 'web-base-lib'
 
 class TestAPIContainer extends mix(AppGQLAPIContainer).with(TestGQLAPIContainerMixin) {}
 

@@ -1,6 +1,6 @@
 import { AuthLogic, StorageLogic } from './types'
-import { AuthLogicImpl } from './modules/auth'
 import { StorageLogicImpl, StorageUploadManager } from './modules/storage'
+import { AuthLogicImpl } from './modules/auth'
 import Vue from 'vue'
 
 export abstract class BaseLogicContainer extends Vue {

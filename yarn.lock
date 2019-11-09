@@ -10914,7 +10914,7 @@ wcwidth@^1.0.1:
 
 "web-base-lib@https://github.com/masterpg/web-base-lib.git":
   version "0.0.1"
-  resolved "https://github.com/masterpg/web-base-lib.git#877b3dec8372b804732e7b5fb99b496794cf0389"
+  resolved "https://github.com/masterpg/web-base-lib.git#20ad4ed266fd994e305ca476440fb102896a461b"
 
 webidl-conversions@^4.0.2:
   version "4.0.2"

@@ -1,7 +1,5 @@
 export { quasar } from './quasar'
 
-export { Mixin, MixinBuilder, mix } from './base/mixin'
-
 export { NoCache } from './base/decorators'
 
 export { BaseConfig, Config, FirebaseConfig, config, setConfig } from './config'

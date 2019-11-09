@@ -1,6 +1,6 @@
 import { BaseGQLAPIContainer, setAPI } from '../../../src'
 import { TestGQLAPIContainerMixin } from '../../helpers/api'
-import { mix } from '../../../src/base/mixin'
+import { mix } from 'web-base-lib'
 
 class MockGQLAPIContainer extends BaseGQLAPIContainer {}
 
