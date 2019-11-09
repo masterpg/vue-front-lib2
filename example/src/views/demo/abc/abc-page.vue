@@ -64,7 +64,7 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, Resizable } from '@/components'
+import { BaseComponent, Resizable } from 'vue-front-lib2/src'
 import { Component, Prop, Watch } from 'vue-property-decorator'
 import CustomCheckbox from '@/views/demo/abc/custom-checkbox.vue'
 import CustomInput from '@/views/demo/abc/custom-input.vue'

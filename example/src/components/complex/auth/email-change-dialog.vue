@@ -87,10 +87,9 @@
 </template>
 
 <script lang="ts">
-import { BaseDialog } from '@/components'
+import { BaseDialog, NoCache } from 'vue-front-lib2/src'
 import { Component } from 'vue-property-decorator'
 import { EmailSignInView } from '@/components/complex/auth/base'
-import { NoCache } from 'vue-front-lib2/src'
 import { QInput } from 'quasar'
 const isEmail = require('validator/lib/isEmail')
 

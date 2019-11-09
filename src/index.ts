@@ -25,3 +25,5 @@ export {
   logic,
   setLogic,
 } from './logic'
+
+export { BaseComponent, BaseDialog, BaseHistoryDialogManager, Dialog, Resizable } from './components'

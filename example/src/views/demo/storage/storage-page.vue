@@ -51,8 +51,8 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, CompStorageUploadProgressFloat, CompTreeNode, CompTreeNodeItem, CompTreeView, Resizable } from '@/components'
-import { NoCache, StorageNode, StorageNodeBag, StorageNodeType } from 'vue-front-lib2/src'
+import { BaseComponent, NoCache, Resizable, StorageNode, StorageNodeBag, StorageNodeType } from 'vue-front-lib2/src'
+import { CompStorageUploadProgressFloat, CompTreeNode, CompTreeNodeItem, CompTreeView } from 'vue-front-lib2/src/components'
 import StorageTreeNodeItem, { StorageTreeNodeData } from '@/views/demo/storage/storage-tree-node-item.vue'
 import { Component } from 'vue-property-decorator'
 import StorageDirCreateDialog from '@/views/demo/storage/storage-dir-create-dialog.vue'

@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Component, Model } from 'vue-property-decorator'
-import { BaseComponent } from '@/components'
+import { BaseComponent } from 'vue-front-lib2/src'
 import { mixins } from 'vue-class-component'
 
 @Component

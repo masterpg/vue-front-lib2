@@ -63,7 +63,7 @@
 </template>
 
 <script lang="ts">
-import { CompTreeNodeData, CompTreeNodeItem } from '@/components'
+import { CompTreeNodeData, CompTreeNodeItem } from 'vue-front-lib2/src/components'
 import { Component } from 'vue-property-decorator'
 import { StorageNodeType } from 'vue-front-lib2/src'
 

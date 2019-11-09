@@ -65,9 +65,8 @@
 </template>
 
 <script lang="ts">
+import { AuthProviderType, BaseDialog } from 'vue-front-lib2/src'
 import { EmailSignInView, ProviderListView } from '@/components/complex/auth/base'
-import { AuthProviderType } from 'vue-front-lib2/src'
-import { BaseDialog } from '@/components'
 import { Component } from 'vue-property-decorator'
 
 @Component({

@@ -19,7 +19,7 @@ span
 </template>
 
 <script lang="ts">
-import { BaseComponent, Resizable } from '@/components'
+import { BaseComponent, Resizable } from 'vue-front-lib2/src'
 import { Component, Prop } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
 

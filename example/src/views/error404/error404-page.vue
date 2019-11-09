@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent } from '@/components'
+import { BaseComponent } from 'vue-front-lib2/src'
 import { Component } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
 import { router } from '@/router'

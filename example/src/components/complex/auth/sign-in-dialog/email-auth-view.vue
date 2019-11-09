@@ -106,10 +106,9 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, Resizable } from '@/components'
+import { BaseComponent, NoCache, Resizable } from 'vue-front-lib2/src'
 import { AuthProviderType } from 'vue-front-lib2/src'
 import { Component } from 'vue-property-decorator'
-import { NoCache } from 'vue-front-lib2/src'
 import PasswordResetView from '@/components/complex/auth/sign-in-dialog/password-reset-view.vue'
 import { QInput } from 'quasar'
 import { mixins } from 'vue-class-component'

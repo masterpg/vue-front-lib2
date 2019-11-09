@@ -136,8 +136,8 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, EmailChangeDialog, HistoryDialogManager, Resizable, SignInDialog } from '@/components'
-import { NoCache, User } from 'vue-front-lib2/src'
+import { BaseComponent, NoCache, Resizable, User } from 'vue-front-lib2/src'
+import { EmailChangeDialog, HistoryDialogManager, SignInDialog } from '@/components'
 import { Component } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
 import { router } from '@/router'

@@ -36,9 +36,9 @@
 </template>
 
 <script lang="ts">
-import { BaseDialog, CompTreeNode } from '@/components'
+import { BaseDialog, StorageNodeType } from 'vue-front-lib2/src'
+import { CompTreeNode } from 'vue-front-lib2/src/components'
 import { Component } from 'vue-property-decorator'
-import { StorageNodeType } from 'vue-front-lib2/src'
 import StorageTreeNodeItem from '@/views/demo/storage/storage-tree-node-item.vue'
 
 export type RemovingNodes = CompTreeNode<StorageTreeNodeItem>[]

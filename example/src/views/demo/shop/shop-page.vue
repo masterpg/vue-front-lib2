@@ -81,7 +81,7 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, Resizable } from '@/components'
+import { BaseComponent, Resizable } from 'vue-front-lib2/src'
 import { CartItem, CheckoutStatus, Product } from '@/logic'
 import { Component } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
