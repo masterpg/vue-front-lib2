@@ -107,13 +107,13 @@
 
 <script lang="ts">
 import { BaseComponent, Resizable } from '@/components'
-import { AuthProviderType } from '@/logic'
+import { AuthProviderType } from 'vue-front-lib2/src'
 import { Component } from 'vue-property-decorator'
-import { NoCache } from '@/base/decorators'
+import { NoCache } from 'vue-front-lib2/src'
 import PasswordResetView from '@/components/complex/auth/sign-in-dialog/password-reset-view.vue'
 import { QInput } from 'quasar'
 import { mixins } from 'vue-class-component'
-import { router } from '@/app/router'
+import { router } from '@/router'
 const isEmail = require('validator/lib/isEmail')
 
 @Component({

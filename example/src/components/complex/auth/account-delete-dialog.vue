@@ -66,7 +66,7 @@
 
 <script lang="ts">
 import { EmailSignInView, ProviderListView } from '@/components/complex/auth/base'
-import { AuthProviderType } from '@/logic'
+import { AuthProviderType } from 'vue-front-lib2/src'
 import { BaseDialog } from '@/components'
 import { Component } from 'vue-property-decorator'
 

@@ -1,11 +1,11 @@
-import { AuthLogic, AuthProviderType, User } from '../../types'
+import { AuthLogic, AuthProviderType } from '../../types'
+import { User, store } from '../../store'
 import { BaseLogic } from '../../base'
 import { Component } from 'vue-property-decorator'
 import { Dialog } from 'quasar'
 import { NoCache } from '../../../base/decorators'
 import { api } from '../../api'
-import { i18n } from '../../../app/i18n'
-import { store } from '../../store'
+import { i18n } from '../../../i18n'
 const cloneDeep = require('lodash/cloneDeep')
 
 @Component

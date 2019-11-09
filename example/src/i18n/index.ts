@@ -1,6 +1,12 @@
-import { BaseI18n, LocaleData, setI18n } from 'vue-front-lib2/src/app/i18n'
+import { BaseI18n, LocaleData, setI18n } from 'vue-front-lib2/src'
 
-export class AppI18n extends BaseI18n {
+//========================================================================
+//
+//  Internal
+//
+//========================================================================
+
+class AppI18n extends BaseI18n {
   protected get supportLocales(): LocaleData[] {
     return [new LocaleData('ja-JP'), new LocaleData('en-US')]
   }
@@ -14,6 +20,12 @@ export class AppI18n extends BaseI18n {
     return msgs.default
   }
 }
+
+//========================================================================
+//
+//  Exports
+//
+//========================================================================
 
 export let i18n: AppI18n
 

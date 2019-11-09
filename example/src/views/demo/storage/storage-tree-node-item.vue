@@ -65,7 +65,7 @@
 <script lang="ts">
 import { CompTreeNodeData, CompTreeNodeItem } from '@/components'
 import { Component } from 'vue-property-decorator'
-import { StorageNodeType } from '@/logic'
+import { StorageNodeType } from 'vue-front-lib2/src'
 
 export interface StorageTreeNodeData extends CompTreeNodeData {
   nodeType: StorageNodeType | 'Storage'

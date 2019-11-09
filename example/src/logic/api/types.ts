@@ -1,10 +1,10 @@
-import { BaseAPIContainer } from 'vue-front-lib2/src/logic/api'
+import { BaseAPIContainer } from 'vue-front-lib2/src'
 
-//----------------------------------------------------------------------
+//========================================================================
 //
 //  API
 //
-//----------------------------------------------------------------------
+//========================================================================
 
 export interface AppAPIContainer extends BaseAPIContainer {
   getSignedUploadUrls(params: { filePath: string; contentType?: string }[]): Promise<string[]>
@@ -26,11 +26,11 @@ export interface AppAPIContainer extends BaseAPIContainer {
   checkoutCart(): Promise<boolean>
 }
 
-//----------------------------------------------------------------------
+//========================================================================
 //
 //  Value objects
 //
-//----------------------------------------------------------------------
+//========================================================================
 
 export interface APIProduct {
   id: string
@@ -63,5 +63,3 @@ export interface APIUpdateCartItemInput {
 export interface APIEditCartItemResponse extends APICartItem {
   product: Pick<APIProduct, 'id' | 'stock'>
 }
-
-export * from 'vue-front-lib2/src/logic/api/types'

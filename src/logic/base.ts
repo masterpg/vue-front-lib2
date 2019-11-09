@@ -5,7 +5,7 @@ let db: firebase.firestore.Firestore
 export abstract class BaseLogic extends Vue {
   //----------------------------------------------------------------------
   //
-  //  Constructors
+  //  Lifecycle hooks
   //
   //----------------------------------------------------------------------
 

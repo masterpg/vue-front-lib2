@@ -7,7 +7,7 @@ import { NoCache } from '../../../../base/decorators'
 export class UserModuleImpl extends BaseModule<UserState> implements UserModule {
   //----------------------------------------------------------------------
   //
-  //  Constructors
+  //  Lifecycle hooks
   //
   //----------------------------------------------------------------------
 

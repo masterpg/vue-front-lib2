@@ -1,7 +1,6 @@
-import { CartItem, CartModule, CartState, CheckoutStatus, StatePartial } from '@/logic/store/types'
-import { BaseModule } from 'vue-front-lib2/src/logic/store'
+import { BaseModule, NoCache, StatePartial } from 'vue-front-lib2/src'
+import { CartItem, CartModule, CartState, CheckoutStatus } from '@/logic/store/types'
 import { Component } from 'vue-property-decorator'
-import { NoCache } from '@/base/decorators'
 const assign = require('lodash/assign')
 
 @Component

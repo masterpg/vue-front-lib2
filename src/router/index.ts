@@ -5,9 +5,21 @@ import { i18n } from '../i18n'
 
 Vue.use(VueRouter)
 
-export let router!: BaseRouter
+//========================================================================
+//
+//  Internal
+//
+//========================================================================
 
 let isBeforeEachSet = false
+
+//========================================================================
+//
+//  Exports
+//
+//========================================================================
+
+export let router: BaseRouter
 
 export function setRouter(value: BaseRouter): void {
   router = value

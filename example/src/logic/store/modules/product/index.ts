@@ -1,7 +1,6 @@
-import { Product, ProductModule, ProductState, ProductsErrorType, StatePartial, StoreError } from '@/logic/store/types'
-import { BaseModule } from 'vue-front-lib2/src/logic/store'
+import { BaseModule, NoCache, StatePartial, StoreError } from 'vue-front-lib2/src'
+import { Product, ProductModule, ProductState, ProductsErrorType } from '@/logic/store/types'
 import { Component } from 'vue-property-decorator'
-import { NoCache } from '@/base/decorators'
 const assign = require('lodash/assign')
 
 @Component

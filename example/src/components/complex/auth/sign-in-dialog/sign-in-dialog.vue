@@ -19,7 +19,7 @@ import { BaseDialog } from '@/components'
 import { Component } from 'vue-property-decorator'
 import EmailAuthView from '@/components/complex/auth/sign-in-dialog/email-auth-view.vue'
 import ProviderListView from '@/components/complex/auth/base/provider-list-view.vue'
-import { router } from '@/app/router'
+import { router } from '@/router'
 
 @Component({
   components: {

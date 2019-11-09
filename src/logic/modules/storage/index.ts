@@ -5,7 +5,7 @@ import { BaseLogic } from '../../base'
 import { Component } from 'vue-property-decorator'
 import { UserStorageUploadManager } from './user-upload'
 import { api } from '../../api'
-import { config } from '../../../app/config'
+import { config } from '../../../config'
 
 @Component
 export class StorageLogicImpl extends BaseLogic implements StorageLogic {

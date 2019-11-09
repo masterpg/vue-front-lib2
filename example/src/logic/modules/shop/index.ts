@@ -1,6 +1,6 @@
 import { APICartItem, APIEditCartItemResponse, APIProduct, api } from '@/logic/api'
 import { CartItem, CheckoutStatus, Product, ShopLogic } from '@/logic/types'
-import { BaseLogic } from 'vue-front-lib2/src/logic'
+import { BaseLogic } from 'vue-front-lib2/src'
 import { Component } from 'vue-property-decorator'
 import { store } from '@/logic/store'
 const assign = require('lodash/assign')

@@ -1,4 +1,4 @@
-import { BaseGQLAPIContainer, setAPI } from '../../../src/logic/api'
+import { BaseGQLAPIContainer, setAPI } from '../../../src'
 import { TestGQLAPIContainerMixin } from '../../helpers/api'
 import { mix } from '../../../src/base/mixin'
 

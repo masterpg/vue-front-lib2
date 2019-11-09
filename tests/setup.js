@@ -3,7 +3,7 @@ require('testdouble-jest')(td, jest)
 
 global.firebase = require('firebase')
 require('./mocks/quasar')
-const config = require('./mocks/base/config')
+const config = require('./mocks/config')
 
 config.initConfig()
 

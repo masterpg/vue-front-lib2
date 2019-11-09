@@ -1,5 +1,5 @@
 import { APIAddCartItemInput, APICartItem, APIEditCartItemResponse, APIProduct, APIUpdateCartItemInput, AppAPIContainer } from '@/logic/api/types'
-import { BaseRESTAPIContainer } from 'vue-front-lib2/src/logic/api'
+import { BaseRESTAPIContainer } from 'vue-front-lib2/src'
 
 export class AppRESTAPIContainer extends BaseRESTAPIContainer implements AppAPIContainer {
   async product(id: string): Promise<APIProduct | undefined> {

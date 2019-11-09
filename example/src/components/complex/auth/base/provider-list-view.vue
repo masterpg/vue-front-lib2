@@ -110,7 +110,7 @@ import {AuthProviderType} from '../../logic'
 <script lang="ts">
 import { BaseComponent, Resizable } from '@/components'
 import { Component, Prop } from 'vue-property-decorator'
-import { AuthProviderType } from '@/logic'
+import { AuthProviderType } from 'vue-front-lib2/src'
 import { mixins } from 'vue-class-component'
 
 @Component({

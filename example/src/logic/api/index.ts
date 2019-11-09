@@ -1,7 +1,7 @@
 import { AppAPIContainer } from '@/logic/api/types'
 import { AppGQLAPIContainer } from '@/logic/api/gql'
 import { AppRESTAPIContainer } from '@/logic/api/rest'
-import { setAPI } from 'vue-front-lib2/src/logic/api'
+import { setAPI } from 'vue-front-lib2/src'
 
 //========================================================================
 //
@@ -17,7 +17,7 @@ let restAPI: AppRESTAPIContainer
 
 //========================================================================
 //
-//  Public
+//  Exports
 //
 //========================================================================
 

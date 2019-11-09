@@ -1,5 +1,5 @@
 import { APIAddCartItemInput, APICartItem, APIEditCartItemResponse, APIProduct, APIUpdateCartItemInput, AppAPIContainer } from '@/logic/api/types'
-import { BaseGQLAPIContainer } from 'vue-front-lib2/src/logic/api'
+import { BaseGQLAPIContainer } from 'vue-front-lib2/src'
 import gql from 'graphql-tag'
 
 export class AppGQLAPIContainer extends BaseGQLAPIContainer implements AppAPIContainer {

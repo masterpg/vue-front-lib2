@@ -49,7 +49,7 @@
 <script lang="ts">
 import { BaseDialog, CompTreeNode } from '@/components'
 import { Component } from 'vue-property-decorator'
-import { NoCache } from '@/base/decorators'
+import { NoCache } from 'vue-front-lib2/src'
 import { QInput } from 'quasar'
 import StorageTreeNodeItem from '@/views/demo/storage/storage-tree-node-item.vue'
 const isEmpty = require('lodash/isEmpty')

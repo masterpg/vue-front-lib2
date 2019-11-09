@@ -26,5 +26,4 @@ export interface ShopLogic {
   checkout(): Promise<void>
 }
 
-export * from 'vue-front-lib2/src/logic/types'
 export { CartItem, CheckoutStatus, Product }

@@ -1,1 +1,3 @@
-import 'vue-front-lib2/src/quasar.extras'
+import { quasar } from 'vue-front-lib2/src'
+
+quasar.importExtras()

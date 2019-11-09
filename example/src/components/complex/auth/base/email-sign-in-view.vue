@@ -81,7 +81,7 @@
 <script lang="ts">
 import { BaseComponent, Resizable } from '@/components'
 import { Component } from 'vue-property-decorator'
-import { NoCache } from '@/base/decorators'
+import { NoCache } from 'vue-front-lib2/src'
 import { QInput } from 'quasar'
 import { mixins } from 'vue-class-component'
 const isEmail = require('validator/lib/isEmail')

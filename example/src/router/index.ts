@@ -1,14 +1,10 @@
-import { BaseRouter, ViewRoute, setRouter } from 'vue-front-lib2/src/app/router'
+import { BaseRouter, ViewRoute, setRouter } from 'vue-front-lib2/src'
 
-export let router: AppRouter
-
-export function initRouter() {
-  router = new AppRouter({
-    mode: 'history',
-    routes: [error404Route, demoRoute.abc, demoRoute.shop, demoRoute.storage, componentsRoute.treeView],
-  })
-  setRouter(router)
-}
+//========================================================================
+//
+//  Internal
+//
+//========================================================================
 
 const error404Route = new (class Error404Route extends ViewRoute {
   get path() {
@@ -104,4 +100,20 @@ class AppRouter extends BaseRouter {
 
     components: componentsRoute,
   }
+}
+
+//========================================================================
+//
+//  Exports
+//
+//========================================================================
+
+export let router: AppRouter
+
+export function initRouter() {
+  router = new AppRouter({
+    mode: 'history',
+    routes: [error404Route, demoRoute.abc, demoRoute.shop, demoRoute.storage, componentsRoute.treeView],
+  })
+  setRouter(router)
 }

@@ -5,6 +5,33 @@ import { dateTimeFormats } from './date-time-formats'
 
 Vue.use(VueI18n)
 
+/**
+ * 以下のソースコードをコピーして一部改変:
+ * node_modules/vue-i18n/dist/vue-i18n.esm.js
+ *
+ * 改変理由:
+ * comp-tree-viewはコンポーネントのインスタンス化をテンプレートに記述するのではなく
+ * プログラムでnewしている。プログラムでnewした場合、$i18nのようにインジェクション
+ * されないライブラリが存在する。この対応として$i18nがインジェクションされていない場合、
+ * 以下のようにアプリケーションがインスタンス化したi18nを使用するよう改変している。
+ */
+Vue.prototype.$t = function(key) {
+  const values: any[] = []
+  let len = arguments.length - 1
+  // eslint-disable-next-line prefer-rest-params
+  while (len-- > 0) values[len] = arguments[len + 1]
+
+  const currentI18n = this.$i18n || i18n
+  // eslint-disable-next-line prefer-spread
+  return currentI18n._t.apply(currentI18n, [key, currentI18n.locale, currentI18n._getMessages(), this].concat(values))
+}
+
+//========================================================================
+//
+//  Exports
+//
+//========================================================================
+
 export let i18n: BaseI18n
 
 export function setI18n(value: BaseI18n): void {
@@ -41,7 +68,7 @@ export class LocaleData {
 export abstract class BaseI18n extends VueI18n {
   //----------------------------------------------------------------------
   //
-  //  Constructors
+  //  Lifecycle hooks
   //
   //----------------------------------------------------------------------
 
@@ -229,25 +256,4 @@ export abstract class BaseI18n extends VueI18n {
     }
     return undefined
   }
-}
-
-/**
- * 以下のソースコードをコピーして一部改変:
- * node_modules/vue-i18n/dist/vue-i18n.esm.js
- *
- * 改変理由:
- * comp-tree-viewはコンポーネントのインスタンス化をテンプレートに記述するのではなく
- * プログラムでnewしている。プログラムでnewした場合、$i18nのようにインジェクション
- * されないライブラリが存在する。この対応として$i18nがインジェクションされていない場合、
- * 以下のようにアプリケーションがインスタンス化したi18nを使用するよう改変している。
- */
-Vue.prototype.$t = function(key) {
-  const values: any[] = []
-  let len = arguments.length - 1
-  // eslint-disable-next-line prefer-rest-params
-  while (len-- > 0) values[len] = arguments[len + 1]
-
-  const currentI18n = this.$i18n || i18n
-  // eslint-disable-next-line prefer-spread
-  return currentI18n._t.apply(currentI18n, [key, currentI18n.locale, currentI18n._getMessages(), this].concat(values))
 }

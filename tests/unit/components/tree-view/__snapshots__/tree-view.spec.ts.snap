@@ -22,7 +22,7 @@ exports[`CompTreeView buildTree() ベーシックケース 1`] = `
           arrow_right
         </i>
       </div>
-
+       
       <div
         class="icon-container"
       >
@@ -48,7 +48,7 @@ exports[`CompTreeView buildTree() ベーシックケース 1`] = `
         Node1
       </span>
     </div>
-
+     
     <div
       class="child-container opened"
       style="height: 0px;"
@@ -70,7 +70,7 @@ exports[`CompTreeView buildTree() ベーシックケース 1`] = `
               arrow_right
             </i>
           </div>
-
+           
           <div
             class="icon-container"
           >
@@ -96,7 +96,7 @@ exports[`CompTreeView buildTree() ベーシックケース 1`] = `
             Node1_1
           </span>
         </div>
-
+         
         <div
           class="child-container opened"
           style="height: 0px;"
@@ -115,7 +115,7 @@ exports[`CompTreeView buildTree() ベーシックケース 1`] = `
                   style="font-size: 26px;"
                 />
               </div>
-
+               
               <div
                 class="icon-container"
               >
@@ -133,7 +133,7 @@ exports[`CompTreeView buildTree() ベーシックケース 1`] = `
                 Node1_1_1
               </span>
             </div>
-
+             
             <div
               class="child-container"
             />
@@ -152,7 +152,7 @@ exports[`CompTreeView buildTree() ベーシックケース 1`] = `
                   style="font-size: 26px;"
                 />
               </div>
-
+               
               <div
                 class="icon-container"
               >
@@ -178,7 +178,7 @@ exports[`CompTreeView buildTree() ベーシックケース 1`] = `
                 Node1_1_2
               </span>
             </div>
-
+             
             <div
               class="child-container"
             />
@@ -197,7 +197,7 @@ exports[`CompTreeView buildTree() ベーシックケース 1`] = `
                   style="font-size: 26px;"
                 />
               </div>
-
+               
               <div
                 class="icon-container"
               >
@@ -223,7 +223,7 @@ exports[`CompTreeView buildTree() ベーシックケース 1`] = `
                 Node1_1_3
               </span>
             </div>
-
+             
             <div
               class="child-container"
             />
@@ -246,7 +246,7 @@ exports[`CompTreeView buildTree() ベーシックケース 1`] = `
           style="font-size: 26px;"
         />
       </div>
-
+       
       <div
         class="icon-container"
       >
@@ -272,7 +272,7 @@ exports[`CompTreeView buildTree() ベーシックケース 1`] = `
         Node2
       </span>
     </div>
-
+     
     <div
       class="child-container"
     />

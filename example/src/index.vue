@@ -137,11 +137,10 @@
 
 <script lang="ts">
 import { BaseComponent, EmailChangeDialog, HistoryDialogManager, Resizable, SignInDialog } from '@/components'
+import { NoCache, User } from 'vue-front-lib2/src'
 import { Component } from 'vue-property-decorator'
-import { NoCache } from '@/base/decorators'
-import { User } from '@/logic'
 import { mixins } from 'vue-class-component'
-import { router } from '@/app/router'
+import { router } from '@/router'
 
 @Component({
   components: {

@@ -1,18 +1,18 @@
-import { components, config, directives, plugins } from '../../src/quasar'
 import { Quasar } from 'quasar'
 import Vue from 'vue'
+import { quasar } from '../../src'
 
 Vue.use(Quasar, {
   components: {
-    ...components,
+    ...quasar.components,
   },
   config: {
-    ...config,
+    ...quasar.config,
   },
   directives: {
-    ...directives,
+    ...quasar.directives,
   },
   plugins: {
-    ...plugins,
+    ...quasar.plugins,
   },
 })

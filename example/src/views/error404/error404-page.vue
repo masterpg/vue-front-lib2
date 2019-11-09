@@ -25,7 +25,7 @@
 import { BaseComponent } from '@/components'
 import { Component } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
-import { router } from '@/app/router'
+import { router } from '@/router'
 
 @Component
 export default class Error404Page extends mixins(BaseComponent) {

@@ -38,12 +38,12 @@ import {
   Quasar,
   Ripple,
 } from 'quasar'
-import { components, config, directives, plugins } from 'vue-front-lib2/src/quasar'
 import Vue from 'vue'
+import { quasar } from 'vue-front-lib2/src'
 
 Vue.use(Quasar, {
   components: {
-    ...components,
+    ...quasar.components,
     // QBtn,
     // QAvatar,
     // QBar,
@@ -79,17 +79,17 @@ Vue.use(Quasar, {
     // QTooltip,
   },
   config: {
-    ...config,
+    ...quasar.config,
     notify: {},
     loading: {},
   },
   directives: {
-    ...directives,
+    ...quasar.directives,
     ClosePopup,
     Ripple,
   },
   plugins: {
-    ...plugins,
+    ...quasar.plugins,
     Loading,
     Notify,
   },

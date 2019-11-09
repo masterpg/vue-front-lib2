@@ -90,7 +90,7 @@
 import { BaseDialog } from '@/components'
 import { Component } from 'vue-property-decorator'
 import { EmailSignInView } from '@/components/complex/auth/base'
-import { NoCache } from '@/base/decorators'
+import { NoCache } from 'vue-front-lib2/src'
 import { QInput } from 'quasar'
 const isEmail = require('validator/lib/isEmail')
 

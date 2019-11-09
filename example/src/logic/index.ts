@@ -1,22 +1,15 @@
-import { BaseLogicContainer, StorageUploadManager, setLogic } from 'vue-front-lib2/src/logic'
+import { BaseLogicContainer, setLogic } from 'vue-front-lib2/src'
 import { getAPIType, setAPIType } from '@/logic/api'
 import { Component } from 'vue-property-decorator'
 import { ShopLogic } from '@/logic/types'
 import { ShopLogicImpl } from '@/logic/modules/shop'
 import Vue from 'vue'
 
-export let logic: LogicContainer
-
-export function initLogic(): void {
-  logic = new LogicContainer()
-  setLogic(logic)
-
-  Object.defineProperty(Vue.prototype, '$logic', {
-    value: logic,
-    writable: false,
-    configurable: true,
-  })
-}
+//========================================================================
+//
+//  Internal
+//
+//========================================================================
 
 @Component
 class LogicContainer extends BaseLogicContainer {
@@ -34,5 +27,23 @@ class LogicContainer extends BaseLogicContainer {
   readonly shop: ShopLogic = new ShopLogicImpl()
 }
 
+//========================================================================
+//
+//  Exports
+//
+//========================================================================
+
+export let logic: LogicContainer
+
+export function initLogic(): void {
+  logic = new LogicContainer()
+  setLogic(logic)
+
+  Object.defineProperty(Vue.prototype, '$logic', {
+    value: logic,
+    writable: false,
+    configurable: true,
+  })
+}
+
 export * from '@/logic/types'
-export { StorageUploadManager }

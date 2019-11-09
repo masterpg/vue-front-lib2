@@ -2,11 +2,11 @@ import { APIStorageNodeType as StorageNodeType } from './api'
 import { StorageUploadManager } from './modules/storage'
 import { User } from './store'
 
-//----------------------------------------------------------------------
+//========================================================================
 //
 //  Logic
 //
-//----------------------------------------------------------------------
+//========================================================================
 
 export interface StorageLogic {
   toURL(path: string): string
@@ -56,11 +56,11 @@ export interface AuthLogic {
   fetchSignInMethodsForEmail(email: string): Promise<AuthProviderType[]>
 }
 
-//----------------------------------------------------------------------
+//========================================================================
 //
 //  Value objects
 //
-//----------------------------------------------------------------------
+//========================================================================
 
 export interface StorageNodeBag {
   list: StorageNode[]
@@ -76,11 +76,11 @@ export interface StorageNode {
   children: StorageNode[]
 }
 
-//----------------------------------------------------------------------
+//========================================================================
 //
 //  Enumerations
 //
-//----------------------------------------------------------------------
+//========================================================================
 
 export enum AuthProviderType {
   Google = 'google.com',
@@ -89,4 +89,4 @@ export enum AuthProviderType {
   Anonymous = 'anonymous',
 }
 
-export { StorageNodeType, User }
+export { StorageNodeType }

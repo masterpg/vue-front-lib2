@@ -1,12 +1,18 @@
 import URI from 'urijs'
 
+//========================================================================
+//
+//  Exports
+//
+//========================================================================
+
 export let config: Config
 
 export function setConfig(value: BaseConfig): void {
   config = value
 }
 
-interface FirebaseConfig {
+export interface FirebaseConfig {
   apiKey: string
   authDomain: string
   databaseURL?: string

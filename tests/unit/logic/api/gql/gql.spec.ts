@@ -1,4 +1,4 @@
-import { api, initAPI } from '../../../../mocks/api'
+import { api, initAPI } from '../../../../mocks/logic/api'
 const isEmpty = require('lodash/isEmpty')
 
 jest.setTimeout(25000)
