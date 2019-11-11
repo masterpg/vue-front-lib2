@@ -26,7 +26,7 @@
 <script lang="ts">
 import * as treeViewUtils from './comp-tree-view-utils'
 import { ChildrenSortFunc, CompTreeNodeData } from './types'
-import { BaseComponent } from '../../base'
+import { BaseComponent } from '../../../base/component'
 import CompTreeNode from './comp-tree-node.vue'
 import { Component } from 'vue-property-decorator'
 import { NoCache } from '../../../base/decorators'

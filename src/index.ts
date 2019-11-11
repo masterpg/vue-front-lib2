@@ -1,5 +1,7 @@
 export { quasar } from './quasar'
 
+export { BaseComponent, BaseDialog, Dialog, Resizable } from './base/component'
+
 export { NoCache } from './base/decorators'
 
 export { BaseConfig, Config, FirebaseConfig, config, setConfig } from './config'
@@ -24,4 +26,4 @@ export {
   setLogic,
 } from './logic'
 
-export { BaseComponent, BaseDialog, BaseHistoryDialogManager, Dialog, Resizable } from './components'
+export { BaseHistoryDialogManager } from './components'

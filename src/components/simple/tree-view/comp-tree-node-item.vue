@@ -25,7 +25,7 @@
 <script lang="ts">
 import * as treeViewUtils from './comp-tree-view-utils'
 import { CompTreeNodeData, CompTreeNodeEditData } from './types'
-import { BaseComponent } from '../../base'
+import { BaseComponent } from '../../../base/component'
 import { Component } from 'vue-property-decorator'
 const isBoolean = require('lodash/isBoolean')
 const isString = require('lodash/isString')

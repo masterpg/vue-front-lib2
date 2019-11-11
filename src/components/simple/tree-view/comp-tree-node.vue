@@ -63,7 +63,7 @@
 <script lang="ts">
 import * as treeViewUtils from './comp-tree-view-utils'
 import { ChildrenSortFunc, CompTreeNodeData, CompTreeNodeEditData } from './types'
-import { BaseComponent } from '../../base'
+import { BaseComponent } from '../../../base/component'
 import CompTreeNodeItem from './comp-tree-node-item.vue'
 import CompTreeView from './comp-tree-view.vue'
 import { Component } from 'vue-property-decorator'

@@ -1,5 +1,5 @@
 import { Constructor } from 'web-base-lib'
-import { Dialog } from '../../base'
+import { Dialog } from '../../../base/component'
 import { Route } from 'vue-router'
 import Vue from 'vue'
 import { Watch } from 'vue-property-decorator'
