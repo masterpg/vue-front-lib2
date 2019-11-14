@@ -49,6 +49,6 @@ export interface CompTreeNodeEditData extends Partial<Omit<CompTreeNodeData, 'it
 
 export type ChildrenSortFunc = (a: CompTreeNode, b: CompTreeNode) => number
 
-export interface CompCheckboxTreeNodeData extends CompTreeNodeData {
+export interface CompTreeCheckboxNodeData extends CompTreeNodeData {
   checked?: boolean
 }

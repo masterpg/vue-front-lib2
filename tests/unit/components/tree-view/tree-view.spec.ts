@@ -1,4 +1,4 @@
-import { CompCheckboxNodeItem, CompTreeNode, CompTreeNodeData, CompTreeView, getDescendants } from '../../../../src/components'
+import { CompTreeCheckboxNodeItem, CompTreeNode, CompTreeNodeData, CompTreeView, getDescendants } from '../../../../src/components'
 import { mount } from '@vue/test-utils'
 const merge = require('lodash/merge')
 const cloneDeep = require('lodash/cloneDeep')
@@ -1483,7 +1483,7 @@ describe('カスタムツリー', () => {
               label: 'Node1_1_1',
               value: 'node1_1_1',
               checked: true,
-              itemClass: CompCheckboxNodeItem,
+              itemClass: CompTreeCheckboxNodeItem,
             },
           ],
         },

@@ -53,12 +53,12 @@
 
 <script lang="ts">
 import { BaseComponent, NoCache, Resizable } from 'vue-front-lib2/src'
-import { CompCheckboxNodeItem, CompCheckboxTreeNodeData, CompTreeNode, CompTreeNodeItem, CompTreeView } from 'vue-front-lib2/src/components'
+import { CompTreeCheckboxNodeData, CompTreeCheckboxNodeItem, CompTreeNode, CompTreeNodeItem, CompTreeView } from 'vue-front-lib2/src/components'
 import { Component } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
 
 @Component({
-  components: { CompTreeView, CompTreeNode, CompTreeNodeItem, CheckboxNodeItem: CompCheckboxNodeItem },
+  components: { CompTreeView, CompTreeNode, CompTreeNodeItem, CheckboxNodeItem: CompTreeCheckboxNodeItem },
 })
 export default class TreeViewDemoPage extends mixins(BaseComponent, Resizable) {
   //----------------------------------------------------------------------
@@ -82,8 +82,8 @@ export default class TreeViewDemoPage extends mixins(BaseComponent, Resizable) {
             opened: true,
             icon: 'folder',
             children: [
-              { label: 'node1-1-1', value: 'node1-1-1', checked: true, itemClass: CompCheckboxNodeItem },
-              { label: 'node1-1-2', value: 'node1-1-2', itemClass: CompCheckboxNodeItem },
+              { label: 'node1-1-1', value: 'node1-1-1', checked: true, itemClass: CompTreeCheckboxNodeItem },
+              { label: 'node1-1-2', value: 'node1-1-2', itemClass: CompTreeCheckboxNodeItem },
             ],
           },
           {
@@ -113,7 +113,7 @@ export default class TreeViewDemoPage extends mixins(BaseComponent, Resizable) {
         opened: true,
         icon: 'folder',
       },
-    ] as CompCheckboxTreeNodeData[])
+    ] as CompTreeCheckboxNodeData[])
   }
 
   //----------------------------------------------------------------------
@@ -190,12 +190,12 @@ export default class TreeViewDemoPage extends mixins(BaseComponent, Resizable) {
     }
   }
 
-  private m_treeViewOnSelected(node: CompTreeNode<CompCheckboxNodeItem>) {
+  private m_treeViewOnSelected(node: CompTreeNode<CompTreeCheckboxNodeItem>) {
     this.m_editedInput.nodeValue = node.value
     this.m_editedInput.nodeLabel = node.label
   }
 
-  private m_treeViewOnCheckedChanged(node: CompTreeNode<CompCheckboxNodeItem>) {
+  private m_treeViewOnCheckedChanged(node: CompTreeNode<CompTreeCheckboxNodeItem>) {
     node.selected = true
   }
 }
