@@ -2,6 +2,12 @@ import { UserModule } from './types'
 import { UserModuleImpl } from './modules/user'
 import Vue from 'vue'
 
+//========================================================================
+//
+//  Exports
+//
+//========================================================================
+
 export abstract class BaseStoreContainer extends Vue {
   readonly user: UserModule = new UserModuleImpl()
 }
@@ -12,5 +18,6 @@ export function setStore(value: BaseStoreContainer): void {
   store = value
 }
 
-export * from './types'
-export * from './base'
+export { StatePartial, StoreError, User, UserModule, UserState } from './types'
+
+export { BaseModule } from './base'
