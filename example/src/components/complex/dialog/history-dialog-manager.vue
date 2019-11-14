@@ -7,16 +7,32 @@
 </template>
 
 <script lang="ts">
-import { AccountDeleteDialog, EmailChangeDialog, SignInDialog } from '@/components/complex/auth'
+import {
+  AccountDeleteDialog as _AccountDeleteDialog,
+  EmailChangeDialog as _EmailChangeDialog,
+  SignInDialog as _SignInDialog,
+} from '@/components/complex/auth'
 import { BaseHistoryDialogManager } from 'vue-front-lib2/src/components'
 import { Component } from 'vue-property-decorator'
-import { Dialog } from '@/components'
+import { Dialog } from 'vue-front-lib2/src'
+
+export namespace SignInDialog {
+  export const name = 'SignInDialog'
+}
+
+export namespace EmailChangeDialog {
+  export const name = 'EmailChangeDialog'
+}
+
+export namespace AccountDeleteDialog {
+  export const name = 'AccountDeleteDialog'
+}
 
 @Component({
   components: {
-    SignInDialog,
-    EmailChangeDialog,
-    AccountDeleteDialog,
+    SignInDialog: _SignInDialog,
+    EmailChangeDialog: _EmailChangeDialog,
+    AccountDeleteDialog: _AccountDeleteDialog,
   },
 })
 export default class HistoryDialogManager extends BaseHistoryDialogManager {
@@ -24,6 +40,7 @@ export default class HistoryDialogManager extends BaseHistoryDialogManager {
     return {
       [SignInDialog.name]: this.$refs.signInDialog as Dialog,
       [EmailChangeDialog.name]: this.$refs.emailChangeDialog as Dialog,
+      [AccountDeleteDialog.name]: this.$refs.accountDeleteDialog as Dialog,
     }
   }
 }

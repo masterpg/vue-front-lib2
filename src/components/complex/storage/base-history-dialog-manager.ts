@@ -1,4 +1,3 @@
-import { Constructor } from 'web-base-lib'
 import { Dialog } from '../../../base/component'
 import { Route } from 'vue-router'
 import Vue from 'vue'
@@ -24,8 +23,8 @@ export abstract class BaseHistoryDialogManager extends Vue {
    * ```
    * protected get dialogs(): { [dialogName: string]: Dialog } {
    *   return {
-   *     [SampleOneDialog.name]: this.$refs.sampleOneDialog as Dialog,
-   *     [SampleTwoDialog.name]: this.$refs.sampleTwoDialog as Dialog,
+   *     SampleOneDialog: this.$refs.sampleOneDialog as Dialog,
+   *     SampleTwoDialog: this.$refs.sampleTwoDialog as Dialog,
    *   }
    * }
    * ```
@@ -40,11 +39,11 @@ export abstract class BaseHistoryDialogManager extends Vue {
 
   /**
    * ダイアログを開きます。
-   * @param dialogType ダイアログのクラスを指定。
+   * @param dialogName ダイアログ名を指定。
    * @param dialogParams ダイアログに渡すパラメータを指定。
    */
-  open<PARAMS>(dialogType: Constructor<Dialog>, dialogParams?: PARAMS) {
-    router.addDialogInfoToURL(dialogType.name, dialogParams)
+  open<PARAMS>(dialogName: string, dialogParams?: PARAMS): void {
+    router.addDialogInfoToURL(dialogName, dialogParams)
   }
 
   //----------------------------------------------------------------------
@@ -53,17 +52,26 @@ export abstract class BaseHistoryDialogManager extends Vue {
   //
   //----------------------------------------------------------------------
 
+  /**
+   * ルーターの遷移を監視し、遷移があった際にURLからダイアログ情報を取得。
+   * ダイアログ情報が取得された場合はそのダイアログを開きます。
+   * @param to
+   * @param from
+   */
   @Watch('$route')
   private m_$routeOnChange(to: Route, from: Route) {
+    // URLからダイアログ情報を取得
     const info = router.getDialogInfo(to)
     if (!info) return
 
+    // URLからダイアログ情報できた場合、対象ダイアログのインスタンスを取得
     const dialog = this.dialogs[info.dialogName]
     if (!dialog) {
       console.warn(`There is no dialog named ${info.dialogName}.`)
       return
     }
 
+    // ダイアログを開く
     dialog.open(info.dialogParams).then(() => {
       router.removeDialogInfoFromURL()
     })

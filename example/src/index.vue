@@ -239,11 +239,11 @@ export default class AppPage extends mixins(BaseComponent, Resizable) {
   }
 
   private m_signInMenuItemOnClick() {
-    this.m_historyDialogManager.open(SignInDialog)
+    this.m_historyDialogManager.open(SignInDialog.name)
   }
 
   private m_changeEmailMenuItemOnClick() {
-    this.m_historyDialogManager.open(EmailChangeDialog)
+    this.m_historyDialogManager.open(EmailChangeDialog.name)
   }
 
   private async m_deleteAccountMenuItemOnClick() {}
