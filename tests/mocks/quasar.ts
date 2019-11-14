@@ -1,6 +1,6 @@
 import { Quasar } from 'quasar'
 import Vue from 'vue'
-import { quasar } from '../../src'
+import { quasar } from '@/lib'
 
 Vue.use(Quasar, {
   components: {

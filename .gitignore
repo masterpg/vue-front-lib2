@@ -4,11 +4,10 @@
 .cache/
 .firebase/
 .idea/
+dist/
 node_modules/
 screenshots/
 firebase.config.js
-
-lib/**/*.js.map
 
 src/**/*.js.map
 

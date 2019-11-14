@@ -1,14 +1,13 @@
-import { BaseGQLAPIContainer, setAPI } from '../../../src'
+import { AppGQLAPIContainer } from '@/example/logic/api/gql/'
 import { TestGQLAPIContainerMixin } from '../../helpers/api'
+import { initAPI as _initAPI } from '@/example/logic/api'
 import { mix } from 'web-base-lib'
 
-class MockGQLAPIContainer extends BaseGQLAPIContainer {}
-
-class TestAPIContainer extends mix(MockGQLAPIContainer).with(TestGQLAPIContainerMixin) {}
+class TestAPIContainer extends mix(AppGQLAPIContainer).with(TestGQLAPIContainerMixin) {}
 
 export let api: TestAPIContainer
 
 export function initAPI(): void {
   api = new TestAPIContainer()
-  setAPI(api)
+  _initAPI({ apiType: 'gql', api })
 }
