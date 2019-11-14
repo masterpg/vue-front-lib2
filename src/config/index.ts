@@ -22,43 +22,40 @@ export interface FirebaseConfig {
   appId: string
 }
 
-export interface Config {
-  api: {
-    protocol: string
-    host: string
-    port: number
-    basePath: string
-    baseURL: string
-  }
+export interface APIConfig {
+  protocol: string
+  host: string
+  port: number
+  basePath: string
+  baseURL: string
+}
 
+export interface Config {
   firebase: FirebaseConfig
+  api: APIConfig
 }
 
 export abstract class BaseConfig implements Config {
-  constructor(firebaseConfig: FirebaseConfig) {
+  constructor(firebaseConfig: FirebaseConfig, apiConfig: Omit<APIConfig, 'baseURL'>) {
     this.firebase = firebaseConfig
+    this.api = this.getAPIConfig(apiConfig)
     firebase.initializeApp(this.firebase!)
   }
 
   readonly firebase: FirebaseConfig
 
-  get api() {
-    const apiEnv = {
-      protocol: String(process.env.VUE_APP_API_PROTOCOL),
-      host: String(process.env.VUE_APP_API_HOST),
-      port: Number(process.env.VUE_APP_API_PORT),
-      basePath: String(process.env.VUE_APP_API_BASE_PATH),
-    }
+  readonly api: APIConfig
 
+  protected getAPIConfig(apiConfig: Omit<APIConfig, 'baseURL'>): APIConfig {
     const baseURL = new URI()
-    if (apiEnv.protocol) baseURL.protocol(apiEnv.protocol)
-    if (apiEnv.host) baseURL.hostname(apiEnv.host)
-    if (apiEnv.port) baseURL.port(apiEnv.port.toString(10))
-    if (apiEnv.basePath) baseURL.path(apiEnv.basePath)
+    if (apiConfig.protocol) baseURL.protocol(apiConfig.protocol)
+    if (apiConfig.host) baseURL.hostname(apiConfig.host)
+    if (apiConfig.port) baseURL.port(apiConfig.port.toString(10))
+    if (apiConfig.basePath) baseURL.path(apiConfig.basePath)
     baseURL.query('')
 
     return {
-      ...apiEnv,
+      ...apiConfig,
       baseURL: baseURL.toString().replace(/\/$/, ''),
     }
   }
