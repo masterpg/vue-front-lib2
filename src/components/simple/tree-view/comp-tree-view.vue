@@ -412,7 +412,7 @@ export default class CompTreeView<NodeData extends CompTreeNodeData = any> exten
     e.stopImmediatePropagation()
 
     const node = e.target.__vue__ as CompTreeNode
-    const detail = e.detail as NodePropertyChangeDetail
+    const detail = e.detail as CompTreeViewUtils.NodePropertyChangeDetail
 
     if (detail.property === 'value') {
       delete this.m_allNodes[detail.oldValue]

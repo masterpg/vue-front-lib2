@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, NoCache, Resizable, StorageNode, StorageNodeBag, StorageNodeType } from 'vue-front-lib2/src'
+import { BaseComponent, ChildrenSortFunc, NoCache, Resizable, StorageNode, StorageNodeBag, StorageNodeType } from 'vue-front-lib2/src'
 import { CompStorageUploadProgressFloat, CompTreeNode, CompTreeNodeItem, CompTreeView } from 'vue-front-lib2/src/components'
 import StorageTreeNodeItem, { StorageTreeNodeData } from '@/views/demo/storage/storage-tree-node-item.vue'
 import { Component } from 'vue-property-decorator'
@@ -138,7 +138,7 @@ export default class StoragePage extends mixins(BaseComponent, Resizable) {
   }
 
   private async m_buildStorageTree(bag: StorageNodeBag): Promise<void> {
-    const sortFunc = (a: CompTreeNode<StorageTreeNodeItem>, b: CompTreeNode<StorageTreeNodeItem>) => {
+    const sortFunc: ChildrenSortFunc = (a: CompTreeNode<StorageTreeNodeItem>, b: CompTreeNode<StorageTreeNodeItem>) => {
       if (a.item.nodeType === StorageNodeType.Dir && b.item.nodeType === StorageNodeType.File) {
         return -1
       } else if (a.item.nodeType === StorageNodeType.File && b.item.nodeType === StorageNodeType.Dir) {
