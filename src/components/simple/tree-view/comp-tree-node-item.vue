@@ -23,9 +23,9 @@
 </template>
 
 <script lang="ts">
-import * as treeViewUtils from './comp-tree-view-utils'
 import { CompTreeNodeData, CompTreeNodeEditData } from './types'
 import { BaseComponent } from '../../../base/component'
+import { CompTreeViewUtils } from './comp-tree-view-utils'
 import { Component } from 'vue-property-decorator'
 const isBoolean = require('lodash/isBoolean')
 const isString = require('lodash/isString')
@@ -50,7 +50,7 @@ export default class CompTreeNodeItem<NodeData extends CompTreeNodeData = any> e
   set label(value: string) {
     const oldValue = this.m_label
     this.m_label = value
-    treeViewUtils.dispatchNodePropertyChanged(this, { property: 'label', newValue: value, oldValue })
+    CompTreeViewUtils.dispatchNodePropertyChanged(this, { property: 'label', newValue: value, oldValue })
   }
 
   private m_value: string = ''
@@ -65,7 +65,7 @@ export default class CompTreeNodeItem<NodeData extends CompTreeNodeData = any> e
   set value(value: string) {
     const oldValue = this.m_value
     this.m_value = value
-    treeViewUtils.dispatchNodePropertyChanged(this, { property: 'value', newValue: value, oldValue })
+    CompTreeViewUtils.dispatchNodePropertyChanged(this, { property: 'value', newValue: value, oldValue })
   }
 
   private m_unselectable: boolean = false
@@ -164,14 +164,14 @@ export default class CompTreeNodeItem<NodeData extends CompTreeNodeData = any> e
     if (this.unselectable) {
       if (changed) {
         this.m_selected = false
-        !initializing && treeViewUtils.dispatchSelectedChanged(this)
+        !initializing && CompTreeViewUtils.dispatchSelectedChanged(this)
       }
     }
     // 選択可能な場合
     else {
       if (changed) {
         this.m_selected = value
-        !initializing && treeViewUtils.dispatchSelectedChanged(this)
+        !initializing && CompTreeViewUtils.dispatchSelectedChanged(this)
       }
     }
   }

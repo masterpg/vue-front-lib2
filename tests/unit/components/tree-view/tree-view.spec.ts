@@ -1,4 +1,4 @@
-import { CompTreeCheckboxNodeItem, CompTreeNode, CompTreeNodeData, CompTreeView, getDescendants } from '../../../../src/components'
+import { CompTreeCheckboxNodeItem, CompTreeNode, CompTreeNodeData, CompTreeView, CompTreeViewUtils } from '../../../../src/components'
 import { mount } from '@vue/test-utils'
 const merge = require('lodash/merge')
 const cloneDeep = require('lodash/cloneDeep')
@@ -534,7 +534,7 @@ describe('CompTreeView', () => {
       treeView.buildTree(nodeDataList)
 
       const node1 = treeView.getNode('node1')!
-      const node1Descendants = getDescendants(node1)
+      const node1Descendants = CompTreeViewUtils.getDescendants(node1)
       const treeViewNodesLength = treeView.children.length
 
       const actual = treeView.removeNode(node1.value)
@@ -557,7 +557,7 @@ describe('CompTreeView', () => {
       treeView.buildTree(nodeDataList)
 
       const node1_1 = treeView.getNode('node1_1')!
-      const node1_1Descendants = getDescendants(node1_1)
+      const node1_1Descendants = CompTreeViewUtils.getDescendants(node1_1)
       const node1 = node1_1.parent
       const node1ChildrenLength = node1.children.length
 
@@ -613,7 +613,7 @@ describe('CompTreeView', () => {
       treeView.buildTree(nodeDataList)
 
       const node1 = treeView.getNode('node1')!
-      const descendants = getDescendants(node1)
+      const descendants = CompTreeViewUtils.getDescendants(node1)
       const treeViewNodesLength = treeView.children.length
 
       const actual = treeView.removeNode(node1.value)
@@ -1008,7 +1008,7 @@ describe('CompTreeNode', () => {
       treeView.buildTree(nodeDataList)
 
       const node1_1 = treeView.getNode('node1_1')!
-      const node1_1Descendants = getDescendants(node1_1)
+      const node1_1Descendants = CompTreeViewUtils.getDescendants(node1_1)
       const node1 = node1_1.parent
       const node1ChildrenLength = node1.children.length
 
@@ -1073,7 +1073,7 @@ describe('CompTreeNode', () => {
       treeView.buildTree(nodeDataList)
 
       const node1_1 = treeView.getNode('node1_1')!
-      const node1_1Descendants = getDescendants(node1_1)
+      const node1_1Descendants = CompTreeViewUtils.getDescendants(node1_1)
       const node1 = node1_1.parent
       const node1ChildrenLength = node1.children.length
 
