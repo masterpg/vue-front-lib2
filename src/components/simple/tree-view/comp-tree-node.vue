@@ -298,7 +298,9 @@ export default class CompTreeNode<NodeItem extends CompTreeNodeItem = any> exten
    *   <li>sortFunc: ノードをソートする関数。insertIndexと同時に指定することはできない。</li>
    * </ul>
    */
-  addChild(child: CompTreeNodeData | CompTreeNode, options: { insertIndex?: number | null; sortFunc?: ChildrenSortFunc } = {}): CompTreeNode {
+  addChild(child: CompTreeNodeData | CompTreeNode, options?: { insertIndex?: number | null; sortFunc?: ChildrenSortFunc }): CompTreeNode {
+    options = options || {}
+
     if (isInteger(options.insertIndex) && options.insertIndex! >= 0 && options.sortFunc) {
       throw new Error('You cannot specify both "insertIndex" and "sortFunc".')
     }
@@ -387,10 +389,9 @@ export default class CompTreeNode<NodeItem extends CompTreeNodeItem = any> exten
   //
   //----------------------------------------------------------------------
 
-  private m_addChildByData(
-    childNodeData: CompTreeNodeData,
-    options: { insertIndex?: number | null; sortFunc?: ChildrenSortFunc } = {}
-  ): CompTreeNode {
+  private m_addChildByData(childNodeData: CompTreeNodeData, options?: { insertIndex?: number | null; sortFunc?: ChildrenSortFunc }): CompTreeNode {
+    options = options || {}
+
     if (this.treeView.getNode(childNodeData.value)) {
       throw new Error(`The node "${childNodeData.value}" already exists.`)
     }
@@ -432,7 +433,9 @@ export default class CompTreeNode<NodeItem extends CompTreeNodeItem = any> exten
     return childNode
   }
 
-  private m_addChildByNode(childNode: CompTreeNode, options: { insertIndex?: number | null; sortFunc?: ChildrenSortFunc } = {}): CompTreeNode {
+  private m_addChildByNode(childNode: CompTreeNode, options?: { insertIndex?: number | null; sortFunc?: ChildrenSortFunc }): CompTreeNode {
+    options = options || {}
+
     // 追加しようとするノードの子に自ノードが含まれないことを検証
     const descendantMap = CompTreeViewUtils.getDescendantMap(childNode)
     if (descendantMap[this.value]) {
@@ -481,7 +484,9 @@ export default class CompTreeNode<NodeItem extends CompTreeNodeItem = any> exten
     return childNode
   }
 
-  private m_getInsertIndex(newNode: CompTreeNode, options: { insertIndex?: number | null; sortFunc?: ChildrenSortFunc } = {}): number {
+  private m_getInsertIndex(newNode: CompTreeNode, options?: { insertIndex?: number | null; sortFunc?: ChildrenSortFunc }): number {
+    options = options || {}
+
     if (isInteger(options.insertIndex)) {
       return options.insertIndex!
     } else if (isFunction(options.sortFunc)) {
