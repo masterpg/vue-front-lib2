@@ -36,8 +36,7 @@
 </template>
 
 <script lang="ts">
-import { BaseDialog, StorageNodeType } from 'vue-front-lib2/src'
-import { CompTreeNode } from 'vue-front-lib2/src/components'
+import { BaseDialog, CompTreeNode, StorageNodeType } from 'vue-front-lib2/src'
 import { Component } from 'vue-property-decorator'
 import StorageTreeNodeItem from '@/views/demo/storage/storage-tree-node-item.vue'
 

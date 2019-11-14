@@ -11,12 +11,14 @@ import Vue from 'vue'
 import { initAPI } from '@/logic/api'
 import { initConfig } from '@/config'
 import { initLogic } from '@/logic'
+import { initSW } from '@/sw'
 import { initStore } from '@/logic/store'
 
 Component.registerHooks(['beforeRouteEnter', 'beforeRouteLeave', 'beforeRouteUpdate'])
 
 async function init() {
   initConfig()
+  initSW()
   initRouter()
   initAPI()
   initStore()

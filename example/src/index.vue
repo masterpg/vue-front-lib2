@@ -136,11 +136,12 @@
 </template>
 
 <script lang="ts">
-import { BaseComponent, NoCache, Resizable, User } from 'vue-front-lib2/src'
+import { BaseComponent, NoCache, Resizable, SWChangeState, SWStateChangeInfo, User } from 'vue-front-lib2/src'
 import { EmailChangeDialog, HistoryDialogManager, SignInDialog } from '@/components'
 import { Component } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
 import { router } from '@/router'
+import { sw } from '@/sw'
 
 @Component({
   components: {
@@ -155,6 +156,8 @@ export default class AppPage extends mixins(BaseComponent, Resizable) {
   //----------------------------------------------------------------------
 
   async created() {
+    sw.addStateChangeListener(this.m_swOnStateChange)
+
     this.m_leftDrawerOpen = this.$q.platform.is.desktop
 
     await this.$logic.shop.pullProducts()
@@ -194,6 +197,8 @@ export default class AppPage extends mixins(BaseComponent, Resizable) {
 
   private m_leftDrawerOpen: boolean = false
 
+  private m_swUpdateIsRequired: boolean = false
+
   private get m_user(): User {
     const user = this.$logic.auth.user
     if (user.isSignedIn) {
@@ -229,6 +234,39 @@ export default class AppPage extends mixins(BaseComponent, Resizable) {
   //  Event listeners
   //
   //----------------------------------------------------------------------
+
+  private m_swOnStateChange(info: SWStateChangeInfo) {
+    this.m_swUpdateIsRequired = false
+
+    if (info.state === SWChangeState.updated) {
+      this.$q.notify({
+        icon: 'info',
+        position: 'bottom-left',
+        message: info.message,
+        actions: [
+          {
+            label: this.$t('reload'),
+            color: 'white',
+            handler: () => window.location.reload(),
+          },
+        ],
+        timeout: 0,
+      })
+    } else if (info.state === SWChangeState.cached) {
+      this.$q.notify({
+        icon: 'info',
+        position: 'bottom-left',
+        message: info.message,
+        timeout: 3000,
+      })
+    }
+
+    if (info.state === SWChangeState.error) {
+      console.error(info.message)
+    } else {
+      console.log('Service Worker:\n', info)
+    }
+  }
 
   private m_onComponentResize(e) {
     console.log('app-view:', e)

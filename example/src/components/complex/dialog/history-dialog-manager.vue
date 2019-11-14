@@ -7,14 +7,13 @@
 </template>
 
 <script lang="ts">
+import { BaseHistoryDialogManager, Dialog } from 'vue-front-lib2/src'
 import {
   AccountDeleteDialog as _AccountDeleteDialog,
   EmailChangeDialog as _EmailChangeDialog,
   SignInDialog as _SignInDialog,
 } from '@/components/complex/auth'
-import { BaseHistoryDialogManager } from 'vue-front-lib2/src/components'
 import { Component } from 'vue-property-decorator'
-import { Dialog } from 'vue-front-lib2/src'
 
 export namespace SignInDialog {
   export const name = 'SignInDialog'

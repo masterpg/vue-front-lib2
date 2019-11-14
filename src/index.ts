@@ -10,6 +10,8 @@ export * from './i18n'
 
 export * from './router'
 
+export * from './sw'
+
 export * from './logic/api'
 
 export * from './logic/store'
