@@ -49,6 +49,36 @@ type VueSelectorResultConverter<T> = { [K in keyof T]: T[K] extends (...args: in
 }
 
 export const VueSelector = Selector(componentSelector => {
+  //--------------------------------------------------
+  //  Functions
+  //--------------------------------------------------
+
+  /**
+   * 引数の値をパスカルケースへ変換します。
+   *
+   * 次のライブラリのコードをコピー:
+   * https://github.com/jonschlinkert/pascalcase/blob/master/index.js
+   *
+   * @param value
+   */
+  function pascalcase(value: string) {
+    const titlecase = input => input[0].toLocaleUpperCase() + input.slice(1)
+
+    if (value === null || value === void 0) return ''
+    if (typeof value.toString !== 'function') return ''
+
+    let input = value.toString().trim()
+    if (input === '') return ''
+    if (input.length === 1) return input.toLocaleUpperCase()
+
+    let match = input.match(/[a-zA-Z0-9]+/g)
+    if (match) {
+      return match.map(m => titlecase(m)).join('')
+    }
+
+    return input
+  }
+
   /**
    * セレクターに適切な値が設定されているか検証します。
    * @param selector
@@ -98,17 +128,20 @@ export const VueSelector = Selector(componentSelector => {
 
   /**
    * 指定されたセレクタをコンポーネントタグ名の配列に変換します。
-   * @param componentSelector
+   * 例: 引数に"MyPage ref:messageInput"が指定された場合、
+   *     ["MyPage", "messageInput"]が返されます。
+   * @param selector
    */
-  function toComponentTagNames(componentSelector: string): string[] {
-    return componentSelector
+  function toComponentTagNames(selector: string): string[] {
+    return selector
       .split(' ')
       .filter(el => !!el)
       .map(el => el.trim())
   }
 
   /**
-   * 指定されたインスタンスからコンポーネントのタグ名を取得します。1
+   * 指定されたインスタンスからコンポーネントのタグ名を取得します。
+   * 例: "my-page", "MyPage" などが返されます。
    * @param instance
    */
   function getComponentTag(instance): string {
@@ -125,6 +158,7 @@ export const VueSelector = Selector(componentSelector => {
 
   /**
    * 指定されたセレクタからref参照の名前を取得します。
+   * 例: 引数に"ref:messageInput"が指定された場合、"messageInput"が返されます。
    * @param selector
    */
   function getRef(selector) {
@@ -145,7 +179,7 @@ export const VueSelector = Selector(componentSelector => {
    * 指定されたselectorsで取得するノードをフィルタします。
    * @param root
    * @param selectors Vueコンポーネントのタグまたはrefの値の配列。
-   * 例: ['my-component', 'refContainer']
+   *   例: ['my-page', 'refContainer']
    */
   function filterNodes(root: Vue, selectors: string[]): Node[] {
     const foundComponents: Node[] = []
@@ -156,7 +190,7 @@ export const VueSelector = Selector(componentSelector => {
         const ref = getRef(selector)
         return ref === getRefOfNode(node)
       }
-      return selector === getComponentTag(node)
+      return pascalcase(selector) === pascalcase(getComponentTag(node))
     }
 
     function walkVueComponentNodes(node, selectorIdx) {
@@ -178,6 +212,10 @@ export const VueSelector = Selector(componentSelector => {
 
     return foundComponents
   }
+
+  //--------------------------------------------------
+  //  Procedure
+  //--------------------------------------------------
 
   validateSelector(componentSelector)
 
