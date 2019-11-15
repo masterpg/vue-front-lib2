@@ -5,7 +5,7 @@
     "build:stg": "vue-cli-service build --mode staging",
     "build": "vue-cli-service build --mode production",
     "serve": "vue-cli-service serve --mode development",
-    "serve:stg": "npm run watch:lib & vue-cli-service serve --mode staging",
+    "serve:stg": "vue-cli-service serve --mode staging",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "testcafe chrome:headless tests/e2e/**/*.test.ts -S -s screenshots --hostname localhost",
     "lint": "./node_modules/web-base-lib/tools/lint.sh",
