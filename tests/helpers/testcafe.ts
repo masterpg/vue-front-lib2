@@ -3,11 +3,38 @@ import { Vue } from 'vue/types/vue'
 
 interface VueSelector extends Selector {
   /**
-   * Vueコンポーネントを取得します。
-   * @param selector Vueのコンポーネント名を指定します。
-   * 例: 'abc-page'
+   * Vueコンポーネントを検索します。
+   *
+   * 次のようなvueファイルが定義された場合の例を示します。
+   *
+   * my-page.vue
+   * ```
+   * <template>
+   *   <div>
+   *     <input :data-tid="tid('messageInput')">
+   *   </div>
+   * </template>
+   *
+   * <script lang="ts">
+   * import { BaseComponent } from '@/lib'
+   *
+   * @Component
+   * export default class MyPage extends BaseComponent {
+   *   …
+   * }
+   * </script>
+   * ```
+   *
+   * 例1: 引数に vueSelector = "my-page" or "MyPage" を指定した場合、
+   * この値と一致するコンポーネントを検索します。
+   *
+   * 例2: 引数に vueSelector = "my-page" , tid = "messageInput" を指定した場合、
+   * `vueSelector`で指定したコンポーネント配下にある`tid`の要素を検索します。
+   *
+   * @param vueSelector
+   * @param tid
    */
-  (selector: string): VueSelectorResultConverter<VueSelector>
+  (vueSelector: string, tid?: string): VueSelector
 
   /**
    * ノードから指定されたフィールドの値を取得します。
@@ -15,6 +42,10 @@ interface VueSelector extends Selector {
    * @param fn
    */
   getFieldValue(fieldName: string, fn?: (value: any) => any): Promise<any>
+
+  find(cssSelector: string): VueSelector
+
+  find(filterFn: (node: Element, idx: number, originNode: Element) => boolean, dependencies?: { [key: string]: any }): VueSelector
 
   /**
    * nodeからVueのデータを抽出します。
@@ -24,31 +55,7 @@ interface VueSelector extends Selector {
   getVue(fn?: (params: { props: any; state: any; computed: any; ref: any }) => any): Promise<any>
 }
 
-type VueSelectorResultConverter<T> = { [K in keyof T]: T[K] extends (...args: infer P) => Selector ? (...args: P) => VueSelector | any : T[K] } & {
-  withText(text: string): VueSelector | any
-  withText(re: RegExp): VueSelector | any
-  filter(cssSelector: string): VueSelector | any
-  filter(filterFn: (node: Element, idx: number) => boolean, dependencies?: { [key: string]: any }): VueSelector | any
-  find(cssSelector: string): VueSelector | any
-  find(filterFn: (node: Element, idx: number, originNode: Element) => boolean, dependencies?: { [key: string]: any }): VueSelector | any
-  parent(): VueSelector | any
-  parent(index: number): VueSelector | any
-  parent(cssSelector: string): VueSelector | any
-  child(): VueSelector | any
-  child(index: number): VueSelector | any
-  child(cssSelector: string): VueSelector | any
-  sibling(): VueSelector | any
-  sibling(index: number): VueSelector | any
-  sibling(cssSelector: string): VueSelector | any
-  nextSibling(): VueSelector | any
-  nextSibling(index: number): VueSelector | any
-  nextSibling(cssSelector: string): VueSelector | any
-  prevSibling(): VueSelector | any
-  prevSibling(index: number): VueSelector | any
-  prevSibling(cssSelector: string): VueSelector | any
-}
-
-export const VueSelector = Selector(componentSelector => {
+export const VueSelector = Selector((vueSelector: string, tid?: string) => {
   //--------------------------------------------------
   //  Functions
   //--------------------------------------------------
@@ -115,7 +122,7 @@ export const VueSelector = Selector(componentSelector => {
   /**
    * ルートとなるVueインスタンスを検索します。
    */
-  function findRootVueInstance(): Vue | null {
+  function findRootVueNode(): Vue | null {
     let instance = null
     const treeWalker = document.createTreeWalker(document, NodeFilter.SHOW_ELEMENT)
 
@@ -181,8 +188,8 @@ export const VueSelector = Selector(componentSelector => {
    * @param selectors Vueコンポーネントのタグまたはrefの値の配列。
    *   例: ['my-page', 'refContainer']
    */
-  function filterNodes(root: Vue, selectors: string[]): Node[] {
-    const foundComponents: Node[] = []
+  function filterNodes(root: Vue, selectors: string[]): Vue[] {
+    const foundComponents: Vue[] = []
 
     // nodeがVueコンポーネントか、refで指定されたノードかをチェック
     function checkVueComponentOrRefNode(node, selector): boolean {
@@ -193,10 +200,10 @@ export const VueSelector = Selector(componentSelector => {
       return pascalcase(selector) === pascalcase(getComponentTag(node))
     }
 
-    function walkVueComponentNodes(node, selectorIdx) {
+    function walkVueComponentNodes(node: Vue, selectorIdx: number) {
       if (checkVueComponentOrRefNode(node, selectors[selectorIdx])) {
         if (selectorIdx === selectors.length - 1) {
-          foundComponents.push(node.$el)
+          foundComponents.push(node)
           return
         }
         selectorIdx++
@@ -217,18 +224,46 @@ export const VueSelector = Selector(componentSelector => {
   //  Procedure
   //--------------------------------------------------
 
-  validateSelector(componentSelector)
+  // Vueセレクターに適切な値が設定されているか検証
+  validateSelector(vueSelector)
 
-  const rootVueInstance = findRootVueInstance()
+  // ルートとなるVueインスタンスを取得
+  const rootVueInstance = findRootVueNode()
   if (!rootVueInstance) throw new Error('The root Vue instance was not found.')
 
+  // ルートインスタンスからVueのバージョンが適切かを検証
   validateVueVersion(rootVueInstance)
 
-  if (!componentSelector) return rootVueInstance.$el
+  // 引数に値が設定されている場合、ルートインスタンスの要素を返す
+  if (!vueSelector) return rootVueInstance.$el
 
-  const componentTags = toComponentTagNames(componentSelector)
+  // Vueセレクタをコンポーネントタグ名の配列に変換
+  const componentTags = toComponentTagNames(vueSelector)
 
-  return filterNodes(rootVueInstance, componentTags)
+  // ルートインスタンス配下からVueセレクタと一致する要素を検索
+  const vueNodes = filterNodes(rootVueInstance, componentTags)
+
+  // 引数のtidが指定されていなかった場合、検索されたVueノード一覧を返す
+  if (!tid) {
+    return vueNodes.map(vueNode => vueNode.$el as Node)
+  }
+
+  // ■ 以下tidが指定されなかった場合の処理
+
+  // Vueセレクタと一致する要素が検索されなかった場合
+  if (!vueNodes.length) {
+    throw new Error(`No nodes matching "${vueSelector}" were found.`)
+  }
+
+  // Vueセレクタと一致した要素をtidのコンテナノードとみなし、
+  // コンテナノード配下にtidと一致するノードを検索する
+  const containerVueNode = vueNodes[0]
+  const tidValue = `${containerVueNode.$vnode.tag}-${tid}`
+  const tidSelector = `[data-tid="${tidValue}"]`
+  // tidSelectorの例: [data-tid="vue-component-87-MyPage-messageInput"]
+  const tidNode = document.querySelector(tidSelector) as Node
+
+  return tidNode
 }).addCustomMethods({
   getFieldValue: (node: Element, fieldName: string, fn: (value: any) => any) => {
     let value = undefined

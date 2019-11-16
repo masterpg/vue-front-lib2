@@ -16,7 +16,7 @@
   <div class="layout vertical" @component-resize="m_onComponentResize">
     <q-card class="app-pa-12" :class="{ 'app-ma-48': screenSize.pc, 'app-ma-24': screenSize.tab, 'app-ma-12': screenSize.sp }">
       <div class="app-my-16">{{ $t('hello', { today: $d(new Date(), 'short') }) }}</div>
-      <q-input ref="messageInput" v-model="m_message" data-e2e-id="messageInput" label="Input Message" />
+      <q-input ref="messageInput" v-model="m_message" :data-tid="tid('messageInput')" label="Input Message" />
       <div class="app-my-16">
         <span class="title">propA: </span><span class="value">{{ propA }}</span>
       </div>
@@ -24,25 +24,25 @@
         <span class="title">propB: </span><span class="value">{{ propB }}</span>
       </div>
       <div class="app-my-16">
-        <span class="title">message: </span><span data-e2e-id="messageOut" class="value">{{ m_message }}</span>
+        <span class="title">message: </span><span :data-tid="tid('messageOut')" class="value">{{ m_message }}</span>
       </div>
       <div class="app-my-16">
         <span class="title">custom propA: </span><span class="value">{{ m_customPropA }}</span>
       </div>
       <div class="app-my-16">
-        <span class="title">reversed message: </span><span data-e2e-id="reversedMessageOut" class="value">{{ m_reversedMessage }}</span>
+        <span class="title">reversed message: </span><span :data-tid="tid('reversedMessageOut')" class="value">{{ m_reversedMessage }}</span>
       </div>
       <div class="app-my-16">
         <span class="title">double reversed message: </span>
-        <span data-e2e-id="doubleReversedMessageOut" class="value">{{ m_doubleReversedMessage }}</span>
+        <span :data-tid="tid('doubleReversedMessageOut')" class="value">{{ m_doubleReversedMessage }}</span>
       </div>
       <div class="layout horizontal center app-my-16">
-        <greet-message ref="greetMessage" data-e2e-id="greetMessage" :message="m_message" class="greet-message"></greet-message>
-        <q-btn data-e2e-id="greetButton" flat rounded color="primary" label="Greet" class="app-ml-12" @click="m_greetButtonOnClick" />
+        <greet-message ref="greetMessage" :data-tid="tid('greetMessage')" :message="m_message" class="greet-message"></greet-message>
+        <q-btn :data-tid="tid('greetButton')" flat rounded color="primary" label="Greet" class="app-ml-12" @click="m_greetButtonOnClick" />
       </div>
       <div class="app-my-16">
         <span class="title">post times: </span><span class="value">{{ m_post.times }}</span>
-        <q-btn data-e2e-id="postButton" flat rounded color="primary" label="Post" class="app-ml-12" @click="m_postButtonOnClick" />
+        <q-btn :data-tid="tid('postButton')" flat rounded color="primary" label="Post" class="app-ml-12" @click="m_postButtonOnClick" />
       </div>
       <div class="layout horizontal center app-my-16">
         <custom-input v-model="m_customInputValue" class="flex-3"></custom-input>
@@ -57,7 +57,7 @@
         </span>
       </div>
       <div class="layout horizontal end-justified">
-        <q-btn data-e2e-id="sleepButton" label="Sleep" color="primary" @click="m_sleepButtonOnClick" />
+        <q-btn :data-tid="tid('sleepButton')" label="Sleep" color="primary" @click="m_sleepButtonOnClick" />
       </div>
     </q-card>
   </div>

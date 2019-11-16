@@ -1,14 +1,13 @@
-import { Selector } from 'testcafe'
 import { VueSelector } from '../../../../../helpers/testcafe'
 declare const test: TestFn
 
 fixture`ABC Page`.page`http://localhost:5000/views/demo/abc`
 
 test('メッセージを入力した際に影響がある箇所を検証', async t => {
-  const messageInput = VueSelector('abc-page').find('[data-e2e-id="messageInput"]')
-  const messageOut = VueSelector('abc-page').find('[data-e2e-id="messageOut"]')
-  const reversedMessageOut = VueSelector('abc-page').find('[data-e2e-id="reversedMessageOut"]')
-  const doubleReversedMessageOut = VueSelector('abc-page').find('[data-e2e-id="doubleReversedMessageOut"]')
+  const messageInput = VueSelector('abc-page', 'messageInput')
+  const messageOut = VueSelector('abc-page', 'messageOut')
+  const reversedMessageOut = VueSelector('abc-page', 'reversedMessageOut')
+  const doubleReversedMessageOut = VueSelector('abc-page', 'doubleReversedMessageOut')
 
   await t
     .selectText(messageInput)
@@ -22,8 +21,8 @@ test('メッセージを入力した際に影響がある箇所を検証', async
 })
 
 test('GREETボタンが押下された場合', async t => {
-  const greetButton = VueSelector('abc-page').find('[data-e2e-id="greetButton"]')
-  const greetMessage = VueSelector('abc-page').find('[data-e2e-id="greetMessage"]')
+  const greetButton = VueSelector('abc-page', 'greetButton')
+  const greetMessage = VueSelector('abc-page', 'greetMessage')
 
   await t.setNativeDialogHandler(() => true).click(greetButton)
 
@@ -37,7 +36,7 @@ test('GREETボタンが押下された場合', async t => {
 })
 
 test('SLEEPボタンが押下された場合', async t => {
-  const sleepButton = VueSelector('abc-page').find('[data-e2e-id="sleepButton"]')
+  const sleepButton = VueSelector('abc-page', 'sleepButton')
 
   await t
     .setNativeDialogHandler((type, text, url) => {
@@ -55,8 +54,8 @@ test('SLEEPボタンが押下された場合', async t => {
 
 test('POSTボタンが押下された場合', async t => {
   const abcPage = VueSelector('abc-page')
-  const messageInput = VueSelector('abc-page').find('[data-e2e-id="messageInput"]')
-  const postButton = VueSelector('abc-page').find('[data-e2e-id="postButton"]')
+  const messageInput = VueSelector('abc-page', 'messageInput')
+  const postButton = VueSelector('abc-page', 'postButton')
 
   await t
     .selectText(messageInput)
