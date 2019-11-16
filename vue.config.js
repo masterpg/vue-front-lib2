@@ -14,19 +14,19 @@ const pages = {
     // output as dist/playground.html
     filename: 'index.html',
     // template title tag needs to be <title><%= htmlWebpackPlugin.options.title %></title>
-    title: 'vue-front-lib',
+    title: 'vue-front-lib Example',
   },
 }
-// if (process.env.VUE_APP_IS_DEVELOPMENT === 'true') {
-//   Object.assign(pages, {
-//     playground: {
-//       entry: 'src/example/playground.ts',
-//       template: 'src/example/playground.html',
-//       filename: 'playground.html',
-//       title: 'Vue Base Project Playground',
-//     },
-//   })
-// }
+if (process.env.VUE_APP_IS_DEVELOPMENT === 'true') {
+  Object.assign(pages, {
+    playground: {
+      entry: 'src/example/playground.ts',
+      template: 'src/example/playground.html',
+      filename: 'playground.html',
+      title: 'vue-front-lib Playground',
+    },
+  })
+}
 
 // Vue CLI Configuration Reference
 // https://cli.vuejs.org/config/
